@@ -1,0 +1,99 @@
+================  20231230-deblur_denoise_filtered : Job ID : 26133  ================
+1 nodes.
+1 CPUs allocated: hpc-sn006.cm.cluster
+40 threads.
+This PBS script is running on host hpc-sn006
+Working directory is /home/d24h_prog2/data_share/ice_water/logs
+
+Date is Sat Dec 30 21:52:40 2023
+
+Environment: /home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9
+
+No Modulefiles Currently Loaded.
+
+Dry run:         n
+Keep temp files: n
+================  Input/Output  ================
+Input
+-------------------
+metadata    : ../../metadata.tsv
+input_dir   : /home/d24h_prog2/data_share/ice_water/qiime/raw
+input_demux : demux-filtered.qza
+
+Output directories
+-------------------
+main : /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133
+deblur_denoising_stats : /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-stats.filtered.qza
+deblur_rep_seqs        : /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-rep_seqs.filtered.qza
+deblur_feature_table   : /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-table.filtered.qza
+
+============== Programs in Use ==============
+> qiime:  q2cli version 2023.9.1
+Run `qiime info` for more version details.
+/home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9/bin/qiime
+System versions
+Python version: 3.8.15
+QIIME 2 release: 2023.9
+QIIME 2 version: 2023.9.2
+q2cli version: 2023.9.1
+
+Installed plugins
+alignment: 2023.9.0
+composition: 2023.9.0
+cutadapt: 2023.9.0
+dada2: 2023.9.0
+deblur: 2023.9.0
+demux: 2023.9.1
+diversity: 2023.9.0
+diversity-lib: 2023.9.0
+emperor: 2023.9.0
+feature-classifier: 2023.9.0
+feature-table: 2023.9.0
+fragment-insertion: 2023.9.0
+longitudinal: 2023.9.1
+metadata: 2023.9.0
+phylogeny: 2023.9.0
+quality-control: 2023.9.0
+quality-filter: 2023.9.0
+sample-classifier: 2023.9.0
+taxa: 2023.9.0
+types: 2023.9.0
+vsearch: 2023.9.0
+
+Application config directory
+/home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9/var/q2cli
+
+Getting help
+To get help with QIIME 2, visit https://qiime2.org
+
+============ Common Command Params ============
+> qiime:
+qiime deblur denoise-16S
+--i-demultiplexed-seqs demux-filtered.qza
+--p-trim-length 130
+--p-left-trim-len 29
+--p-sample-stats
+--o-table /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-table.filtered.qza
+--o-representative-sequences /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-rep_seqs.filtered.qza
+--o-stats /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-stats.filtered.qza
+&& qiime deblur visualize-stats
+--i-deblur-stats /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-stats.filtered.qza
+--o-visualization /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-stats.filtered.qzv
+&& qiime feature-table tabulate-seqs
+--i-data /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-rep_seqs.filtered.qza
+--o-visualization /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-rep_seqs.filtered.qzv
+&& qiime feature-table summarize
+--i-table /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-table.filtered.qza
+--m-sample-metadata-file ../../metadata.tsv
+--o-visualization /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-table.filtered.qzv
+
+
+============== EXECUTING..... ==============
+Temp dir created: ../../jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln
+------------------------------
+Processed 1 of 1 entries, with
+    1 passed
+    0 failed
+    0 remaining (not processed).
+Duration: 1 days, 16 hours, 40 seconds
+Job Finish Time is Mon Jan  1 13:53:22 2024.

@@ -1,0 +1,90 @@
+================  20231229-fastp_trim_qc : Job ID : 26115  ================
+1 nodes.
+1 CPUs allocated: hpc-sn006.cm.cluster
+40 threads.
+This PBS script is running on host hpc-sn006
+Working directory is /home/d24h_prog2/data_share/ice_water/logs
+
+Date is Fri Dec 29 10:20:56 2023
+
+Environment: /home/d24h_prog2/miniconda3/envs/vivian-biotools
+
+Currently Loaded Modulefiles:
+ 1) vivian/parallel/20221222  
+
+Dry run:         n
+Keep temp files: n
+================  Input/Output  ================
+Input
+-------------------
+roster    : /home/d24h_prog2/data_share/ice_water/raw/fastqs.tsv
+input_dir : /home/d24h_prog2/data_share/ice_water/raw
+
+Output directories
+-------------------
+log                 : /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/logs
+trimmed             : /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed
+main                : /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115
+fastp_json_and_html : /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp
+html     : /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/ACCESSION.fp.html
+unmerged : /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/ACCESSION_READ.unmerged.fq.gz
+json     : /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/ACCESSION.fp.json
+merged   : /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/ACCESSION.merged.fq.gz
+
+============== Programs in Use ==============
+> GNU parallel : GNU parallel 20221222
+Copyright (C) 2007-2022 Ole Tange, http://ole.tange.dk and Free Software
+Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+GNU parallel comes with no warranty.
+
+Web site: https://www.gnu.org/software/parallel
+
+When using programs that use GNU Parallel to process data for publication
+please cite as described in 'parallel --citation'.
+/home/d24h_prog2/vivian/local/opt/GNU Parallel/20221222/bin/parallel
+/home/d24h_prog2/vivian/local/opt/GNU Parallel/20221222/bin/parcat
+
+> fastp:  fastp 0.23.4
+/home/d24h_prog2/miniconda3/envs/vivian-biotools/bin/fastp
+
+============ Common Command Params ============
+# > parallel:
+# --resume-failed
+--halt soon,fail=3
+--colsep 	
+--jobs 9
+
+> fastp
+run_trim_qc {1} {2}
+--qualified_quality_phred 20
+--length_required 50
+--thread 4
+
+Threads per job:   4
+
+Joblog: /home/d24h_prog2/data_share/ice_water/logs/20231229-fastp_trim_qc.joblog.26115
+============== EXECUTING..... ==============
+mkdir: created directory '/home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp'
+mkdir: created directory '/home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/logs'
+mkdir: created directory '/home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed'
+[2023 Dec 10 - 10:20:56 HKT] Running fastp
+[2023 Dec 10 - 10:20:56 HKT] 10 samples
+[2023 Dec 10 - 10:20:57 HKT] Running job 4 - Water-2a...done (56.9s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 2 - Water-Neg2...done (1m 7.1s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 6 - Water-5a...done (1m 45.2s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 8 - Water-7a...done (1m 47.6s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 9 - Water-9a...done (1m 52.8s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 3 - Water-Neg3...done (2m 26.3s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 5 - Water-3a...done (2m 29.0s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 1 - Water-Neg1...done (2m 34.0s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 7 - Water-6a...done (2m 43.9s).
+[2023 Dec 10 - 10:21:53 HKT] Running job 10 - Water-10a...done (2m 43.4s).
+------------------------------
+Processed 10 of 10 entries, with
+    10 passed
+    0 failed
+    0 remaining (not processed).
+Duration: 3 minutes, 41 seconds
+Job Finish Time is Fri Dec 29 10:24:37 2023.

@@ -1,0 +1,19 @@
+INFO(140737354008384)2023-12-30 21:52:58,710:*************************
+INFO(140737354008384)2023-12-30 21:52:58,711:deblurring started
+WARNING(140737354008384)2023-12-30 21:52:58,711:deblur version 1.1.1 workflow started on /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/qiime2/d24h_prog2/data/3fb846e8-5b41-48c5-83ac-a1934fc8c616/data
+WARNING(140737354008384)2023-12-30 21:52:58,711:parameters: {'seqs_fp': '/home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/qiime2/d24h_prog2/data/3fb846e8-5b41-48c5-83ac-a1934fc8c616/data', 'output_dir': '/home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/tmpf0lwlfbo', 'pos_ref_fp': (), 'pos_ref_db_fp': (), 'neg_ref_fp': (), 'neg_ref_db_fp': (), 'overwrite': True, 'mean_error': 0.005, 'error_dist': [1.0, 0.06, 0.02, 0.02, 0.01, 0.005, 0.005, 0.005, 0.001, 0.001, 0.001, 0.0005], 'indel_prob': 0.01, 'indel_max': 3, 'trim_length': 130, 'left_trim_length': 29, 'min_reads': 10, 'min_size': 2, 'threads_per_sample': 1, 'keep_tmp_files': True, 'log_level': 2, 'log_file': '/home/d24h_prog2/data_share/ice_water/qiime/raw/deblur.log', 'jobs_to_start': 1, 'is_worker_thread': False, 'logger': <Logger __main__ (INFO)>}
+INFO(140737354008384)2023-12-30 21:52:58,711:error_dist is : [1.0, 0.06, 0.02, 0.02, 0.01, 0.005, 0.005, 0.005, 0.001, 0.001, 0.001, 0.0005]
+INFO(140737354008384)2023-12-30 21:52:58,711:deblur main program started
+INFO(140737354008384)2023-12-30 21:52:58,713:processing directory /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/qiime2/d24h_prog2/data/3fb846e8-5b41-48c5-83ac-a1934fc8c616/data
+INFO(140737354008384)2023-12-30 21:52:58,715:building negative db sortmerna index files
+INFO(140737354008384)2023-12-30 21:52:58,715:build_index_sortmerna files ['/home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9/lib/python3.8/site-packages/deblur/support_files/artifacts.fa'] to dir /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/tmpf0lwlfbo/deblur_working_dir
+INFO(140737354008384)2023-12-30 21:52:58,872:building positive db sortmerna index files
+INFO(140737354008384)2023-12-30 21:52:58,872:build_index_sortmerna files ['/home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9/lib/python3.8/site-packages/deblur/support_files/88_otus.fasta'] to dir /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/tmpf0lwlfbo/deblur_working_dir
+INFO(140737354008384)2023-12-30 21:53:35,264:processing per sample fasta files
+INFO(140737354008384)2023-12-30 21:53:35,264:--------------------------------------------------------
+INFO(140737354008384)2023-12-30 21:53:35,264:launch_workflow for file /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/qiime2/d24h_prog2/data/3fb846e8-5b41-48c5-83ac-a1934fc8c616/data/neg2_8_L001_R1_001.fastq.gz
+INFO(140737354008384)2023-12-30 22:08:36,637:dereplicate seqs file /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/tmpf0lwlfbo/deblur_working_dir/neg2_8_L001_R1_001.fastq.gz.trim
+INFO(140737354008384)2023-12-30 22:08:51,791:remove_artifacts_seqs file /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/tmpf0lwlfbo/deblur_working_dir/neg2_8_L001_R1_001.fastq.gz.trim.derep
+INFO(140737354008384)2023-12-30 22:08:58,086:total sequences 269788, passing sequences 269788, failing sequences 0
+INFO(140737354008384)2023-12-30 22:08:58,086:multiple_sequence_alignment seqs file /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/tmp.HpsMAgKrln/tmpf0lwlfbo/deblur_working_dir/neg2_8_L001_R1_001.fastq.gz.trim.derep.no_artifacts
+INFO(140737354008384)2023-12-30 22:31:23,849:deblurring 269788 sequences

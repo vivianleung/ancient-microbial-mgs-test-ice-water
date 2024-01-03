@@ -1,0 +1,405 @@
+(env:qiime2-amplicon-2023.9) scr:vivian d24h_prog2@hpc-hn001:~/data_share/ice_water/qiime$ date && time qiime vsearch merge-pairs --i-demultiplexed-seqs demux-trimmed-PE.qza --p-threads 4 --o-merged-sequences demux-t
+rimmed-merged.qza --output-dir vsearch_merge_pairs --verbose
+Sat Dec 30 13:20:54 HKT 2023
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/10_6_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42
+a6-b9ce-a8bc8e5d39a5/data/10_16_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/10_0_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 10 --f
+astq_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+   9702797  Pairs
+   7972701  Merged (82.2%)
+   1730096  Not merged (17.8%)
+
+Pairs that failed merging due to various reasons:
+    249979  too few kmers found on same diagonal
+    880143  multiple potential alignments
+     79112  too many differences
+    268897  alignment score too low, or score drop too high
+       285  overlap too short
+    251680  staggered read pairs
+
+Statistics of all reads:
+     94.63  Mean read length
+
+Statistics of merged reads:
+     91.50  Mean fragment length
+     31.85  Standard deviation of fragment length
+      0.40  Mean expected error in forward sequences
+      0.25  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.50  Mean observed errors in merged region of forward sequences
+      0.25  Mean observed errors in merged region of reverse sequences
+      0.76  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/10_0_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/2_0_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a
+6-b9ce-a8bc8e5d39a5/data/2_10_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/2_1_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 10 --fast
+q_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+   4253187  Pairs
+   3089031  Merged (72.6%)
+   1164156  Not merged (27.4%)
+   
+Pairs that failed merging due to various reasons:
+    446983  too few kmers found on same diagonal
+     75188  multiple potential alignments
+     34803  too many differences
+    579438  alignment score too low, or score drop too high
+     12432  overlap too short
+     15312  staggered read pairs
+
+Statistics of all reads:
+    142.46  Mean read length
+
+Statistics of merged reads:
+    198.11  Mean fragment length
+     62.08  Standard deviation of fragment length
+      0.37  Mean expected error in forward sequences
+      0.29  Mean expected error in reverse sequences
+      0.26  Mean expected error in merged sequences
+      0.33  Mean observed errors in merged region of forward sequences
+      0.17  Mean observed errors in merged region of reverse sequences
+      0.50  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/2_1_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/3_1_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a
+6-b9ce-a8bc8e5d39a5/data/3_11_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/3_2_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 10 --fast
+q_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+  11650429  Pairs
+   7873396  Merged (67.6%)
+   3777033  Not merged (32.4%)
+
+Pairs that failed merging due to various reasons:
+   1718705  too few kmers found on same diagonal
+     30623  multiple potential alignments
+     62667  too many differences
+   1913230  alignment score too low, or score drop too high
+     43581  overlap too short
+      8227  staggered read pairs
+
+Statistics of all reads:
+    147.22  Mean read length
+
+Statistics of merged reads:
+    214.92  Mean fragment length
+     53.34  Standard deviation of fragment length
+      0.28  Mean expected error in forward sequences
+      0.28  Mean expected error in reverse sequences
+      0.24  Mean expected error in merged sequences
+      0.21  Mean observed errors in merged region of forward sequences
+      0.15  Mean observed errors in merged region of reverse sequences
+      0.36  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/3_2_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/5_2_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/5_12_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/5_3_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 10 --fastq_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+   7416872  Pairs
+   4249282  Merged (57.3%)
+   3167590  Not merged (42.7%)
+
+Pairs that failed merging due to various reasons:
+    275781  too few kmers found on same diagonal
+   2072450  multiple potential alignments
+     87130  too many differences
+    601488  alignment score too low, or score drop too high
+      7866  overlap too short
+    122875  staggered read pairs
+
+Statistics of all reads:
+    127.18  Mean read length
+
+Statistics of merged reads:
+    155.29  Mean fragment length
+     70.47  Standard deviation of fragment length
+      0.41  Mean expected error in forward sequences
+      0.33  Mean expected error in reverse sequences
+      0.19  Mean expected error in merged sequences
+      0.46  Mean observed errors in merged region of forward sequences
+      0.29  Mean observed errors in merged region of reverse sequences
+      0.75  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/5_3_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/6_3_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a
+6-b9ce-a8bc8e5d39a5/data/6_13_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/6_4_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 10 --fast
+q_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+  11118136  Pairs
+   9772006  Merged (87.9%)
+   1346130  Not merged (12.1%)
+
+Pairs that failed merging due to various reasons:
+     89921  too few kmers found on same diagonal
+    643041  multiple potential alignments
+    104055  too many differences
+    319980  alignment score too low, or score drop too high
+      2264  overlap too short
+    186869  staggered read pairs
+
+Statistics of all reads:
+    105.62  Mean read length
+
+Statistics of merged reads:
+    111.25  Mean fragment length
+     47.96  Standard deviation of fragment length
+      0.38  Mean expected error in forward sequences
+      0.21  Mean expected error in reverse sequences
+      0.06  Mean expected error in merged sequences
+      0.45  Mean observed errors in merged region of forward sequences
+      0.18  Mean observed errors in merged region of reverse sequences
+      0.62  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/6_4_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/7_4_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a
+6-b9ce-a8bc8e5d39a5/data/7_14_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/7_5_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 10 --fast
+q_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+   7239626  Pairs
+   4276812  Merged (59.1%)
+   2962814  Not merged (40.9%)
+
+Pairs that failed merging due to various reasons:
+    143153  too few kmers found on same diagonal
+   2087135  multiple potential alignments
+     88406  too many differences
+    486426  alignment score too low, or score drop too high
+      3968  overlap too short
+    153726  staggered read pairs
+
+Statistics of all reads:
+    116.21  Mean read length
+
+Statistics of merged reads:
+    122.63  Mean fragment length
+     62.59  Standard deviation of fragment length
+      0.45  Mean expected error in forward sequences
+      0.28  Mean expected error in reverse sequences
+      0.13  Mean expected error in merged sequences
+      0.55  Mean observed errors in merged region of forward sequences
+      0.27  Mean observed errors in merged region of reverse sequences
+      0.83  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/7_5_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/9_5_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a
+6-b9ce-a8bc8e5d39a5/data/9_15_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/9_6_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 10 --fast
+q_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+   6852636  Pairs
+   5867030  Merged (85.6%)
+    985606  Not merged (14.4%)
+
+Pairs that failed merging due to various reasons:
+     19678  too few kmers found on same diagonal
+    556611  multiple potential alignments
+     63920  too many differences
+    172957  alignment score too low, or score drop too high
+       290  overlap too short
+    172150  staggered read pairs
+
+Statistics of all reads:
+     93.77  Mean read length
+
+Statistics of merged reads:
+     92.17  Mean fragment length
+     34.06  Standard deviation of fragment length
+      0.43  Mean expected error in forward sequences
+      0.20  Mean expected error in reverse sequences
+      0.05  Mean expected error in merged sequences
+      0.54  Mean observed errors in merged region of forward sequences
+      0.19  Mean observed errors in merged region of reverse sequences
+      0.73  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/9_6_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/neg1_7_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-
+42a6-b9ce-a8bc8e5d39a5/data/neg1_17_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/neg1_7_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 
+10 --fastq_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+  10231814  Pairs
+   8658607  Merged (84.6%)
+   1573207  Not merged (15.4%)
+
+Pairs that failed merging due to various reasons:
+     20088  too few kmers found on same diagonal
+    985171  multiple potential alignments
+     78694  too many differences
+    233254  alignment score too low, or score drop too high
+       193  overlap too short
+    255807  staggered read pairs
+
+Statistics of all reads:
+     91.59  Mean read length
+
+Statistics of merged reads:
+     88.66  Mean fragment length
+     29.06  Standard deviation of fragment length
+      0.39  Mean expected error in forward sequences
+      0.18  Mean expected error in reverse sequences
+      0.04  Mean expected error in merged sequences
+      0.50  Mean observed errors in merged region of forward sequences
+      0.18  Mean observed errors in merged region of reverse sequences
+      0.68  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/neg1_7_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/neg2_8_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-
+42a6-b9ce-a8bc8e5d39a5/data/neg2_18_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/neg2_8_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 
+10 --fastq_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+   4444759  Pairs
+   3711670  Merged (83.5%)
+    733089  Not merged (16.5%)
+
+Pairs that failed merging due to various reasons:
+      5584  too few kmers found on same diagonal
+    483778  multiple potential alignments
+     37757  too many differences
+    109032  alignment score too low, or score drop too high
+        52  overlap too short
+     96886  staggered read pairs
+
+Statistics of all reads:
+     92.52  Mean read length
+
+Statistics of merged reads:
+     89.73  Mean fragment length
+     28.30  Standard deviation of fragment length
+      0.42  Mean expected error in forward sequences
+      0.20  Mean expected error in reverse sequences
+      0.04  Mean expected error in merged sequences
+      0.54  Mean observed errors in merged region of forward sequences
+      0.19  Mean observed errors in merged region of reverse sequences
+      0.73  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/neg2_8_L001_R1_001.fastq
+
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: vsearch --fastq_mergepairs /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-42a6-b9ce-a8bc8e5d39a5/data/neg3_9_L001_R1_001.fastq.gz --reverse /tmp/tmp.gdaj1226q5/qiime2/d24h_prog2/data/a7342915-4da3-
+42a6-b9ce-a8bc8e5d39a5/data/neg3_19_L001_R2_001.fastq.gz --fastqout /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/neg3_9_L001_R1_001.fastq --fastq_ascii 33 --fastq_minlen 1 --fastq_minovlen 
+10 --fastq_maxdiffs 10 --fastq_qmin 0 --fastq_qminout 0 --fastq_qmax 41 --fastq_qmaxout 41 --fasta_width 0 --threads 4
+
+vsearch v2.22.1_linux_x86_64, 125.9GB RAM, 12 cores
+https://github.com/torognes/vsearch
+
+Merging reads 100%
+   9638506  Pairs
+   8198141  Merged (85.1%)
+   1440365  Not merged (14.9%)
+
+Pairs that failed merging due to various reasons:
+     22230  too few kmers found on same diagonal
+    813421  multiple potential alignments
+     91519  too many differences
+    275382  alignment score too low, or score drop too high
+       215  overlap too short
+    237598  staggered read pairs
+
+Statistics of all reads:
+     97.07  Mean read length
+
+Statistics of merged reads:
+     94.57  Mean fragment length
+     31.02  Standard deviation of fragment length
+      0.41  Mean expected error in forward sequences
+      0.21  Mean expected error in reverse sequences
+      0.04  Mean expected error in merged sequences
+      0.53  Mean observed errors in merged region of forward sequences
+      0.20  Mean observed errors in merged region of reverse sequences
+      0.72  Mean observed errors in merged region
+Running external command line application. This may print messages to stdout and/or stderr.
+The command being run is below. This command cannot be manually re-run as it will depend on temporary files that no longer exist.
+
+Command: gzip /tmp/tmp.gdaj1226q5/q2-SingleLanePerSampleSingleEndFastqDirFmt-_6zezt9e/neg3_9_L001_R1_001.fastq
+
+Saved SampleData[JoinedSequencesWithQuality] to: demux-trimmed-merged.qza
+
+real    18m21.280s
+user    28m13.596s
+sys     0m31.900s

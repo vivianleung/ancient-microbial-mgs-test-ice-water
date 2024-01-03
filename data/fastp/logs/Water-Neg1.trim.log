@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 14243771
+total bases: 2150809421
+Q20 bases: 1904534072(88.5496%)
+Q30 bases: 1718880652(79.9179%)
+
+Read2 before filtering:
+total reads: 14243771
+total bases: 2150809421
+Q20 bases: 1911402197(88.869%)
+Q30 bases: 1747153452(81.2324%)
+
+Read1 after filtering:
+total reads: 10231814
+total bases: 936978327
+Q20 bases: 880214992(93.9419%)
+Q30 bases: 815111332(86.9936%)
+
+Read2 after filtering:
+total reads: 10231814
+total bases: 937365101
+Q20 bases: 901539343(96.178%)
+Q30 bases: 853763962(91.0813%)
+
+Filtering result:
+reads passed filter: 20463628
+reads failed due to low quality: 3770658
+reads failed due to too many N: 168
+reads failed due to too short: 4253088
+reads with adapter trimmed: 22941592
+bases trimmed due to adapters: 1403195079
+
+Duplication rate: 5.84729%
+
+Insert size peak (evaluated by paired-end reads): 74
+
+JSON report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-Neg1.fp.json
+HTML report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-Neg1.fp.html
+
+fastp -i ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-Neg1.1.oSE1Wa -I ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-Neg1.2.iJTLmH -o /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-Neg1_1.trimmed.fq.gz -O /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-Neg1_2.trimmed.fq.gz --unpaired1 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-Neg1_1.unpaired.fq.gz --unpaired2 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-Neg1_2.unpaired.fq.gz --report_title Water-Neg1 trim and QC --json /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-Neg1.fp.json --html /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-Neg1.fp.html --qualified_quality_phred 20 --length_required 50 --thread 4 
+fastp v0.23.4, time used: 52 seconds

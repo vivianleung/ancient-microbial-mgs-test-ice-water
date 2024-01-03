@@ -1,0 +1,16 @@
+Warning message:
+package ‘optparse’ was built under R version 4.2.3 
+R version 4.2.2 (2022-10-31) 
+Loading required package: Rcpp
+DADA2: 1.26.0 / Rcpp: 1.0.11 / RcppParallel: 5.1.6 
+2) Filtering ..........
+3) Learning Error Rates
+530043612 total bases in 8764906 reads from 1 samples will be used for learning the error rates.
+
+
+Aborted!
+Running external command line application(s). This may print messages to stdout and/or stderr.
+The command(s) being run are below. These commands cannot be manually re-run as they will depend on temporary files that no longer exist.
+
+Command: run_dada.R --input_directory /tmp/tmp.gdaj1226q5/tmpdnk4om78/forward --input_directory_reverse /tmp/tmp.gdaj1226q5/tmpdnk4om78/reverse --output_path /tmp/tmp.gdaj1226q5/tmpdnk4om78/output.tsv.biom --output_track /tmp/tmp.gdaj1226q5/tmpdnk4om78/track.tsv --filtered_directory /tmp/tmp.gdaj1226q5/tmpdnk4om78/filt_f --filtered_directory_reverse /tmp/tmp.gdaj1226q5/tmpdnk4om78/filt_r --truncation_length 0 --truncation_length_reverse 0 --trim_left 30 --trim_left_reverse 30 --max_expected_errors 2.0 --max_expected_errors_reverse 2.0 --truncation_quality_score 2 --min_overlap 12 --pooling_method independent --chimera_method consensus --min_parental_fold 1.0 --allow_one_off False --num_threads 4 --learn_min_reads 1000000
+

@@ -1,0 +1,39 @@
+Read1 before filtering:
+total reads: 9702797
+total bases: 918045378
+Q20 bases: 859804430(93.656%)
+Q30 bases: 794262183(86.5167%)
+
+Read2 before filtering:
+total reads: 9702797
+total bases: 918292755
+Q20 bases: 867434272(94.4616%)
+Q30 bases: 811796621(88.4028%)
+
+Merged and filtered:
+total reads: 9056203
+total bases: 847902540
+Q20 bases: 807465272(95.2309%)
+Q30 bases: 749750494(88.4241%)
+
+Filtering result:
+reads passed filter: 19405594
+reads failed due to low quality: 0
+reads failed due to too many N: 0
+reads corrected by overlap analysis: 3035174
+bases corrected by overlap analysis: 9003848
+
+Duplication rate: 17.9727%
+
+Insert size peak (evaluated by paired-end reads): 74
+
+Read pairs merged: 9056203
+% of original read pairs: 93.336%
+% in reads after filtering: 100%
+
+
+JSON report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/fastp/Water-10a.fp.json
+HTML report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/fastp/Water-10a.fp.html
+
+fastp -i Water-10a_1.trimmed.fq.gz -I Water-10a_2.trimmed.fq.gz -o /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/merged/Water-10a_1.unmerged.fq.gz -O /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/merged/Water-10a_2.unmerged.fq.gz --merged_out /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/merged/Water-10a.merged.fq.gz --json /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/fastp/Water-10a.fp.json --html /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/fastp/Water-10a.fp.html --merge --disable_adapter_trimming --disable_length_filtering --disable_quality_filtering --disable_trim_poly_g --thread 4 
+fastp v0.23.4, time used: 23 seconds

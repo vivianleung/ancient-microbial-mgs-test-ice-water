@@ -1,0 +1,165 @@
+#!/bin/sh
+### Job name
+#PBS -N Lucyqi2den
+### Declare job non-rerunable
+#PBS -r n
+###PBS -j oe
+#PBS -k oed
+
+################Change This For Different Queue#####################
+#PBS -q stdq1
+###PBS -q gpuq1
+###PBS -q medq1
+####################################################################
+
+### Wall time required. This example is 48 hours
+#PBS -l walltime=200:00:00
+
+### Number of nodes 
+### The following means 1 nodes required. Processor Per Node=20, 
+### ppn (Processor Per Node) can be any number up to 20.
+###PBS -l nodes=2:ppn=20
+
+#########REMEMBER TO CHANGE THE THREAD NUMBER ACCORDING TO THE CHOSEN NODE#################
+#PBS -l nodes=1:ppn=40
+###PBS -l select=1:ncpus=5
+###PBS -l select=1:ncpus=32:mem=1500gb
+###########################################################################################
+
+#The following stuff will be executed in the first allocated node.
+#Please don't modify it
+
+PATH=$PBS_O_PATH
+cd $PBS_O_WORKDIR
+# Define number of processors
+NPROCS=`wc -l < $PBS_NODEFILE`
+NNODES=`uniq $PBS_NODEFILE | wc -l`
+NCORES=$((NPROCS / NNODES))
+
+JID=`echo ${PBS_JOBID}| sed "s/.hpc2015-mgt.hku.hk//"`
+echo Job ID : ${JID}
+echo ${NPROCS} CPUs allocated: `cat $PBS_NODEFILE` 1>&2
+echo This PBS script is running on host `hostname` 1>&2
+echo Working directory is $PBS_O_WORKDIR  1>&2
+
+echo ============== ${PBS_JOBNAME} : ${NPROCS} CPUs ====================
+echo "Job Start Time is `date "+%Y/%m/%d -- %H:%M:%S"`"
+
+##############################################################################################################################################################
+
+path="/home/d24h_prog2/JoeCheung-Rodent-16S/qiimeoutputs"
+cd ${path}
+
+ module load anaconda3/2021.05 
+ source activate chris_software
+ source activate qiime2-2021.8
+export TMPDIR='/home/d24h_prog2/chris/data/microbiome_mosq/TMPDIR2'
+echo ${TMPDIR}
+trimf="0"
+trimr="0"
+truncf="200"
+truncr="200"
+threads="40"
+
+qiime tools import \
+--type 'SampleData[PairedEndSequencesWithQuality]' \
+--input-path /home/d24h_prog2/JoeCheung-Rodent-16S/originalreads/ \
+--input-format CasavaOneEightSingleLanePerSampleDirFmt \
+--output-path demux-paired-end_${line2}.qza
+
+#qiime dada2 denoise-paired \
+#--i-demultiplexed-seqs rat16Sdemux-paired-end.qza \
+#--p-trim-left-f ${trimf} \
+#--p-trim-left-r ${trimr} \
+#--p-trunc-len-f ${truncf} \
+#--p-trunc-len-r ${truncr} \
+#--p-n-threads ${threads} \
+#--verbose \
+#--o-table rat16S_table_q30.qza \
+#--o-representative-sequences rat16Srep-seqs_q30.qza \
+#--o-denoising-stats rat16Sdenoising-stats_q30.qza
+#qiime quality-filter q-score \
+# --i-demux rat16Sdemux-paired-end.qza \
+# --o-filtered-sequences rat16Sdemux-filtered.qza \
+# --o-filter-stats rat16Sdemux-filter-stats.qza
+
+#qiime deblur denoise-16S \
+#  --i-demultiplexed-seqs rat16Sdemux-filtered.qza \
+#  --p-trim-length 120 \
+#  --o-representative-sequences rat16Srep-seqs-deblur.qza \
+#  --o-table rat16Stable-deblur.qza \
+#  --p-sample-stats \
+#  --o-stats rat16Sdeblur-stats.qza
+
+#qiime metadata tabulate \
+#  --m-input-file rat16Sdemux-filter-stats.qza \
+#  --o-visualization rat16Sdemux-filter-stats.qzv
+#qiime deblur visualize-stats \
+#  --i-deblur-stats rat16Sdeblur-stats.qza \
+#  --o-visualization rat16Sdeblur-stats.qzv
+
+#echo "This is the body" | mail -s "Subject: microbiome-pipeline-QIIME2-dada2 merged is done" lucy.delataillade@gmail.com
+
+#Feature table summary
+###make metadata file in tsv format: i.e. barcode_metadata.tsv
+
+#Generate visual and tabular summaries of a feature table.
+#qiime feature-table summarize \
+#  --i-table rat16Stable_q30.qza \
+#  --o-visualization rat16Stable_q30.qzv \
+#  --m-sample-metadata-file ratmetadata ###need metadata file here
+
+#Generate tabular view of feature identifier to sequence mapping, including links to BLAST each sequence against the NCBI nt database.
+#qiime feature-table tabulate-seqs \
+#  --i-data rat16Srep-seqs_q30.qza \
+#  --o-visualization rat16Srep-seqs_q30.qzv
+
+#Generate a tabular view of Metadata. The output visualization supports interactive filtering, sorting, and exporting to common file formats.
+#qiime metadata tabulate \
+#  --m-input-file rat16Sdenoising-stats_q30.qza \
+#  --o-visualization rat16Sdenoising-stats_q30.qzv
+
+#qiime phylogeny align-to-tree-mafft-fasttree \
+#--i-sequences rat16Srep-seqs-deblur.qza \
+#--p-n-threads ${threads} \
+#--verbose \
+#--o-alignment rat16Saligned-rep-seqs_q30.qza \
+#--o-masked-alignment rat16Smasked-aligned-rep-seqs_q30.qza \
+#--o-tree rat16Sunrooted-tree_q30.qza \
+#--o-rooted-tree rat16Srooted-tree_q30.qza
+
+#echo "This is the body" | mail -s "Subject: microbiome-pipeline-QIIME2 tree is done" lucy.delataillade@gmail.com
+
+#qiime feature-classifier classify-consensus-vsearch \
+#  --i-query rat16Srep-seqs-deblur.qza \
+#  --i-reference-reads ~/lucy/unnamedqiime2things/silva-138-99-seqs.qza \
+#  --i-reference-taxonomy ~/lucy/unnamedqiime2things/silva-138-99-tax.qza \
+#  --o-classification rat16Svsearch16taxonomy.qza \
+#  --p-perc-identity 0.97 \
+#  --p-maxaccepts 3 \
+#  --p-threads 40
+
+#  echo "This is the body" | mail -s "Subject: microbiome-pipeline-QIIME2 classification is done" lucy.delataillade@gmail.com
+
+#  qiime metadata tabulate \
+#  --m-input-file rat16Svsearch16taxonomy.qza \
+#  --o-visualization rat16Svsearch16taxonomy.qzv
+
+#  qiime taxa barplot \
+#  --i-table rat16Stable-deblur.qza \
+align-to-tree-mafft-fasttree#  --i-taxonomy rat16Svsearch16taxonomy.qza \
+#  --m-metadata-file ratmetadata \
+#  --o-visualization rat16Staxa-bar-plots_q30_gg.qzv
+
+qiime diversity core-metrics-phylogenetic --i-phylogeny rat16Srooted-tree_q30.qza --i-table rat16Stable-deblur.qza --m-metadata-file ../ratmetadata --p-sampling-depth 80000 --output-dir merged_core-metrics-results
+
+
+echo "Hello there" | mail -s "Subject: Your Job is done" ldelat@connect.hku.hk
+##############################################################################################################################################################
+
+echo "Job Finish Time is `date "+%Y/%m/%d -- %H:%M:%S"`"
+
+#mv ~/*${PBS_JOBNAME}* /home/d24h_prog2/lucy/
+#mv /home/d24h_prog2/chris/logs/*${PBS_JOBID}* /home/d24h_prog2/chris/logs/${PBS_JOBNAME}.o${PBS_JOBID}
+
+exit 0

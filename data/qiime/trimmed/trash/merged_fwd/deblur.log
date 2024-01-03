@@ -1,0 +1,56 @@
+INFO(23456247879488)2023-12-30 16:37:51,311:*************************
+INFO(23456247879488)2023-12-30 16:37:51,312:deblurring started
+WARNING(23456247879488)2023-12-30 16:37:51,312:deblur version 1.1.1 workflow started on /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data
+WARNING(23456247879488)2023-12-30 16:37:51,312:parameters: {'seqs_fp': '/tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data', 'output_dir': '/tmp/tmp.EwQtPyq8tC/tmp_3bwyfst', 'pos_ref_fp': (), 'pos_ref_db_fp': (), 'neg_ref_fp': (), 'neg_ref_db_fp': (), 'overwrite': True, 'mean_error': 0.005, 'error_dist': [1.0, 0.06, 0.02, 0.02, 0.01, 0.005, 0.005, 0.005, 0.001, 0.001, 0.001, 0.0005], 'indel_prob': 0.01, 'indel_max': 3, 'trim_length': 30, 'left_trim_length': 30, 'min_reads': 10, 'min_size': 2, 'threads_per_sample': 1, 'keep_tmp_files': True, 'log_level': 2, 'log_file': '/home/d24h_prog2/data_share/ice_water/qiime/merged_fwd/deblur.log', 'jobs_to_start': 1, 'is_worker_thread': False, 'logger': <Logger __main__ (INFO)>}
+INFO(23456247879488)2023-12-30 16:37:51,312:error_dist is : [1.0, 0.06, 0.02, 0.02, 0.01, 0.005, 0.005, 0.005, 0.001, 0.001, 0.001, 0.0005]
+INFO(23456247879488)2023-12-30 16:37:51,312:deblur main program started
+INFO(23456247879488)2023-12-30 16:37:51,312:processing directory /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data
+INFO(23456247879488)2023-12-30 16:37:51,313:building negative db sortmerna index files
+INFO(23456247879488)2023-12-30 16:37:51,313:build_index_sortmerna files ['/home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9/lib/python3.8/site-packages/deblur/support_files/artifacts.fa'] to dir /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir
+INFO(23456247879488)2023-12-30 16:37:51,418:building positive db sortmerna index files
+INFO(23456247879488)2023-12-30 16:37:51,418:build_index_sortmerna files ['/home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9/lib/python3.8/site-packages/deblur/support_files/88_otus.fasta'] to dir /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir
+INFO(23456247879488)2023-12-30 16:38:43,944:processing per sample fasta files
+INFO(23456247879488)2023-12-30 16:38:43,944:--------------------------------------------------------
+INFO(23456247879488)2023-12-30 16:38:43,944:launch_workflow for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/2_0_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 16:51:44,559:dereplicate seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/2_0_L001_R1_001.fastq.gz.trim
+INFO(23456247879488)2023-12-30 16:51:45,042:remove_artifacts_seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/2_0_L001_R1_001.fastq.gz.trim.derep
+WARNING(23456247879488)2023-12-30 16:51:45,042:file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/2_0_L001_R1_001.fastq.gz.trim.derep has size 0, continuing
+WARNING(23456247879488)2023-12-30 16:51:45,059:remove artifacts failed, aborting
+WARNING(23456247879488)2023-12-30 16:51:45,059:deblurring failed for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/2_0_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 16:51:45,060:--------------------------------------------------------
+INFO(23456247879488)2023-12-30 16:51:45,060:launch_workflow for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/3_1_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 17:27:40,715:dereplicate seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/3_1_L001_R1_001.fastq.gz.trim
+INFO(23456247879488)2023-12-30 17:27:42,185:remove_artifacts_seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/3_1_L001_R1_001.fastq.gz.trim.derep
+WARNING(23456247879488)2023-12-30 17:27:42,212:file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/3_1_L001_R1_001.fastq.gz.trim.derep has size 0, continuing
+WARNING(23456247879488)2023-12-30 17:27:42,212:remove artifacts failed, aborting
+WARNING(23456247879488)2023-12-30 17:27:42,213:deblurring failed for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/3_1_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 17:27:42,213:--------------------------------------------------------
+INFO(23456247879488)2023-12-30 17:27:42,213:launch_workflow for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/5_2_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 17:50:13,629:dereplicate seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/5_2_L001_R1_001.fastq.gz.trim
+INFO(23456247879488)2023-12-30 17:50:14,377:remove_artifacts_seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/5_2_L001_R1_001.fastq.gz.trim.derep
+WARNING(23456247879488)2023-12-30 17:50:14,377:file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/5_2_L001_R1_001.fastq.gz.trim.derep has size 0, continuing
+WARNING(23456247879488)2023-12-30 17:50:14,377:remove artifacts failed, aborting
+WARNING(23456247879488)2023-12-30 17:50:14,377:deblurring failed for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/5_2_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 17:50:14,377:--------------------------------------------------------
+INFO(23456247879488)2023-12-30 17:50:14,377:launch_workflow for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/6_3_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 18:23:54,757:dereplicate seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/6_3_L001_R1_001.fastq.gz.trim
+INFO(23456247879488)2023-12-30 18:23:55,872:remove_artifacts_seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/6_3_L001_R1_001.fastq.gz.trim.derep
+WARNING(23456247879488)2023-12-30 18:23:55,872:file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/6_3_L001_R1_001.fastq.gz.trim.derep has size 0, continuing
+WARNING(23456247879488)2023-12-30 18:23:55,872:remove artifacts failed, aborting
+WARNING(23456247879488)2023-12-30 18:23:55,873:deblurring failed for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/6_3_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 18:23:55,873:--------------------------------------------------------
+INFO(23456247879488)2023-12-30 18:23:55,873:launch_workflow for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/7_4_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 18:45:53,070:dereplicate seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/7_4_L001_R1_001.fastq.gz.trim
+INFO(23456247879488)2023-12-30 18:45:53,831:remove_artifacts_seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/7_4_L001_R1_001.fastq.gz.trim.derep
+WARNING(23456247879488)2023-12-30 18:45:53,831:file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/7_4_L001_R1_001.fastq.gz.trim.derep has size 0, continuing
+WARNING(23456247879488)2023-12-30 18:45:53,831:remove artifacts failed, aborting
+WARNING(23456247879488)2023-12-30 18:45:53,831:deblurring failed for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/7_4_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 18:45:53,831:--------------------------------------------------------
+INFO(23456247879488)2023-12-30 18:45:53,831:launch_workflow for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/9_5_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 19:06:28,142:dereplicate seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/9_5_L001_R1_001.fastq.gz.trim
+INFO(23456247879488)2023-12-30 19:06:28,826:remove_artifacts_seqs file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/9_5_L001_R1_001.fastq.gz.trim.derep
+WARNING(23456247879488)2023-12-30 19:06:28,826:file /tmp/tmp.EwQtPyq8tC/tmp_3bwyfst/deblur_working_dir/9_5_L001_R1_001.fastq.gz.trim.derep has size 0, continuing
+WARNING(23456247879488)2023-12-30 19:06:28,826:remove artifacts failed, aborting
+WARNING(23456247879488)2023-12-30 19:06:28,826:deblurring failed for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/9_5_L001_R1_001.fastq.gz
+INFO(23456247879488)2023-12-30 19:06:28,826:--------------------------------------------------------
+INFO(23456247879488)2023-12-30 19:06:28,827:launch_workflow for file /tmp/tmp.EwQtPyq8tC/qiime2/d24h_prog2/data/96e1b09e-59d1-4765-a50d-5445dca5d9f0/data/10_6_L001_R1_001.fastq.gz

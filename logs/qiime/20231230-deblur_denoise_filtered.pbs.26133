@@ -1,0 +1,267 @@
+#!/usr/bin/env bash
+
+# qiime.pbs
+
+# all-purpose for qiime2
+
+# Vivian Leung
+
+# Created:       30 Dec 2023
+# Last updated:  30 Dec 2023
+# Last used:     30 Dec 2023
+
+
+# Todo
+### Job name
+### Queue name (qaussian): stdq1, medq1, fatq1 or gpuq1
+### Wall time required (between 00:00:01 to 336:00:00).
+### Number of CPUs: ppn: up to 40 for stdq1, 48 for gpuq1, 64 for medq1 and fatq1
+### Memory: up to 750gb for stdq1, 1000gb for medq1 and gpuq1, 3000gb for fatq1
+#PBS -N 20231230-deblur_denoise_filtered
+#PBS -q stdq1
+#PBS -l walltime=40:00:00
+#PBS -l select=1:ncpus=40:mem=750gb
+
+## Generally fixed settings
+#PBS -M leungvw@connect.hku.hk
+#__PBS -m ae
+#PBS -v MODULEPATH
+
+### Declare job non-rerunable
+#PBS -r n
+#PBS -k oed
+
+#######
+set -e
+set -o nounset
+set -o errtrace
+set -o pipefail
+
+export start_time=$(date +'%s.%N') DRY_RUN= KEEP_TMP= NO_TMPDIR=
+
+DRY_RUN='n'
+KEEP_TMP='n'
+NO_TMPDIR=1
+# NO_TMPDIR=0  # don't make tmpdir   # for socket
+
+export n_samples=1
+
+############ SPECS AND PARAMS ############
+
+# I/O
+
+# constants exports for pbsutils and jobs
+export PROJECT_DIR DATA_DIR INPUT_DIR OUT_DIR ROSTER
+declare -A INPATHS OUT_DIRS OUT_FILES
+
+# key directories
+PROJECT_DIR="/home/d24h_prog2/data_share/ice_water"
+DATA_DIR="$PROJECT_DIR/qiime/raw"
+
+INPUT_DIR="$DATA_DIR"
+OUT_DIR="${PROJECT_DIR}/jobs/${PBS_JOBNAME}-${PBS_JOBID%%.*}"
+
+declare IN_DEMUX="demux-filtered.qza"
+declare METADATA="$PROJECT_DIR/metadata.tsv"
+
+METADATA="$(realpath --relative-to="$INPUT_DIR" "$METADATA")"
+
+# # for q-score filtering
+# declare OUT_FILTERED="${OUT_DIR}/demux-filtered-PE.qza"
+# declare OUT_STATS="${OUT_DIR}/filter_stats-PE.qza"
+
+# for merging PE reads
+# declare OUT_MERGED="${OUT_DIR}/demux-filtered-merged.qza"
+
+# # for dada2 denoising
+# declare OUT_TABLE="${OUT_DIR}/dada2_denoise-table.trimmed.qza"
+# declare OUT_REP_SEQS="${OUT_DIR}/dada2_denoise-rep_seqs.trimmed.qza"
+# declare OUT_STATS="${OUT_DIR}/dada2_denoise-stats.trimmed.qza"
+
+# for deblur denoising
+declare OUT_TABLE="${OUT_DIR}/deblur_denoise-table.filtered.qza"
+declare OUT_REP_SEQS="${OUT_DIR}/deblur_denoise-rep_seqs.filtered.qza"
+declare OUT_STATS="${OUT_DIR}/deblur_denoise-stats.filtered.qza"
+
+# assoc array for easier logging
+
+INPATHS=(
+    [input_dir]="$INPUT_DIR"
+    [input_demux]="$IN_DEMUX"
+    [metadata]="$METADATA"
+)
+
+# output dirs to make
+OUT_DIRS=([main]="${OUT_DIR}")
+
+OUT_FILES=(
+  [deblur_feature_table]="$OUT_TABLE"
+  [deblur_rep_seqs]="$OUT_REP_SEQS"
+  [deblur_denoising_stats]="$OUT_STATS"
+)
+  # [qscore_filtered_demux]="$OUT_FILTERED"
+  # [qscore_filter_stats]="$OUT_STATS"
+
+  # [demux_merged]="$OUT_MERGED"
+
+  # [dada2_feature_table]="$OUT_TABLE"
+  # [dada2_rep_seqs]="$OUT_REP_SEQS"
+  # [dada2_denoising_stats]="$OUT_STATS"
+
+
+
+# environment settings
+declare CONDA_ENV MODULES
+
+CONDA_ENV="qiime2-amplicon-2023.9"
+MODULES=()
+
+declare -a QIIME_ARGS=(
+  
+  # for deblur denoise 16S
+  qiime deblur denoise-16S --i-demultiplexed-seqs "$IN_DEMUX" --p-trim-length 130 --p-left-trim-len 29 --p-sample-stats --o-table "${OUT_TABLE}" --o-representative-sequences "${OUT_REP_SEQS}" --o-stats "${OUT_STATS}" 
+  '&&'
+  qiime deblur visualize-stats --i-deblur-stats "${OUT_STATS}" --o-visualization "${OUT_STATS/%qza/qzv}"
+  '&&'
+  qiime feature-table tabulate-seqs --i-data "${OUT_REP_SEQS}" --o-visualization "${OUT_REP_SEQS/%qza/qzv}"
+  '&&'
+  qiime feature-table summarize --i-table "${OUT_TABLE}" --m-sample-metadata-file "${METADATA}"  --o-visualization "${OUT_TABLE/%qza/qzv}"
+
+)
+
+  ## For q-score filtering
+
+  # qiime quality-filter q-score --i-demux "$IN_DEMUX" --o-filtered-sequences "$OUT_FILTERED" --o-filter-stats "$OUT_STATS" 
+  # '&&' qiime demux summarize --i-data "$OUT_FILTERED" --o-visualization "${OUT_FILTERED/%qza/qzv}" 
+  # '&&' qiime metadata tabulate --m-input-file "${OUT_STATS}" --o-visualization "${OUT_STATS/%qza/qzv}"
+  
+  # # For merge pairs
+  # qiime vsearch merge-pairs --i-demultiplexed-seqs "$IN_DEMUX" --verbose --p-threads $OMP_NUM_THREADS --o-merged-sequences "$OUT_MERGED"
+  # '&&' 
+  # qiime demux summarize --i-data "$OUT_MERGED" --o-visualization "${OUT_MERGED/%qza/qzv}"
+
+
+  ## For dada2
+
+  # qiime dada2 denoise-paired --i-demultiplexed-seqs "$IN_DEMUX" --p-trim-left-f 29 --p-trim-left-r 29 --p-trunc-len-f 0 --p-trunc-len-r 0 --p-n-threads $OMP_NUM_THREADS --verbose --o-table "${OUT_TABLE}" --o-representative-sequences "${OUT_REP_SEQS}" --o-denoising-stats "${OUT_STATS}"
+  # '&&'
+  # qiime feature-table tabulate-seqs --i-data "$OUT_REP_SEQS" --o-visualization "${OUT_REP_SEQS/%qza/qzv}"
+  # '&&'
+  # qiime metadata tabulate --m-input-file "$OUT_STATS" --o-visualization "${OUT_STATS/%qza/qzv}"
+  # '&&'
+  # qiime feature-table summarize --i-table "$OUT_TABLE" --o-visualization "${OUT_TABLE/%qza/qzv}" --m-sample-metadata-file "${METADATA}"
+
+
+  
+
+############ UTILS AND FUNCTIONS  ############
+# put things like path generation here
+
+
+############  STANDARD/FIXED SETUP  ############
+
+# Exports: duration timestamp print_array print_params set_conda_env
+#          DEFAULT_CONDA_PREFIX
+# run /home/d24h_prog2/vivian/utils/utils.sh --help for helpdoc
+source "/home/d24h_prog2/vivian/utils/utils.sh"
+
+# Common utilities for PBS scripts
+
+# Export PBS variables for pbsutils
+export PBS_JOBNAME PBS_NODEFILE PBS_O_WORKDIR OMP_NUM_THREADS
+
+# remove junk in PATH (manually put in by others in ~/.bashrc)
+export PATH="$(clean_path "$PBS_O_PATH" -e '^\/home\/d24h_prog2\/' \
+        -i '^\/home\/d24h_prog2\/(\.conda|miniconda3|vivian)\/')"
+
+cd $PBS_O_WORKDIR
+
+# Parse PBS variables
+
+# export PBS variables for pbsutils
+export NPROCS NNODES NCORES JID
+
+NPROCS=$(wc -l < $PBS_NODEFILE)
+NNODES=$(uniq $PBS_NODEFILE | wc -l)
+NCORES=$((NPROCS / NNODES))
+JID="${PBS_JOBID%%.*}"
+
+# Parse input rosters and logs
+export roster n_samples
+if [[ -n "${ROSTER+foo}" ]] ; then
+    roster="$PBS_O_WORKDIR/$PBS_JOBNAME.$(basename "$ROSTER").$JID"
+    cp "$ROSTER" "$roster"
+    n_samples=$(wc -l <"${roster}")
+fi
+
+# export for pbsutils
+export joblog
+
+# Save this pbs job script to jobs dir
+cp "$0" "$PBS_O_WORKDIR/$PBS_JOBNAME.pbs.$JID"
+
+##  Prep environment ##
+
+# init conda env
+set_conda_env "$CONDA_ENV"
+
+# import modules
+for mod in "${MODULES[@]}" ; do module load "${mod}" ; done
+
+# this must come after defining all of the below exported
+# exports: is_dry_run do_keep_tmp epilogue epilogue_simple trap_error
+#          trap_finish_job standard_prologue io_prologue
+source "/home/d24h_prog2/vivian/utils/pbsutils.sh"
+
+trap trap_error ERR
+trap epilogue EXIT
+
+# print info about PBS and environment
+standard_prologue
+
+io_prologue 'INPATHS' 'OUT_DIRS' 'OUT_FILES'
+
+############  END OF STANDARD/FIXED SETUP  ############
+
+# Report params and programs
+cat <<-PROLOGUE_PROGRAMS_PARAMS
+
+	============== Programs in Use ==============
+	> qiime:  $(qiime --version 2>&1)
+	$(which qiime)
+	$(qiime info)
+
+	============ Common Command Params ============
+	> qiime:
+	$( (( ${#QIIME_ARGS[@]} > 0 )) &&  print_params "${QIIME_ARGS[@]}" )
+
+PROLOGUE_PROGRAMS_PARAMS
+
+####################  CORE  ####################
+
+
+####################  EXECUTE  ####################
+printf "\n============== EXECUTING..... ==============\n"
+
+# make output dirs
+mkdir -p "${OUT_DIR}"
+mkdir -pv "${OUT_DIRS[@]}"
+
+# make tmpdir
+if [[ ${NO_TMPDIR:-0} == 0  ]] ; then
+  export TMPDIR="$(mktemp -d)"
+else 
+  mktempdir
+  # shorten path
+  export TMPDIR="$(realpath --relative-to="${INPUT_DIR}" $TMPDIR)"
+fi
+echo "Temp dir created: $TMPDIR"
+
+
+
+# important: go to directory
+cd "${INPUT_DIR}"
+
+eval "${QIIME_ARGS[@]}"
+# printf '%s Running quality filter' "$(timestamp)\n" | tee >(cat >&2)
+

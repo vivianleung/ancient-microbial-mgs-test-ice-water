@@ -1,0 +1,13 @@
+# data/notes.txt
+
+## 03 Jan 2023
+Data is WGS of microbial material from test samples
+
+Data directores: (last modified)
+├── 29 Dec 2023 fastp
+├── 31 Dec 2023 jobs
+├── 29 Dec 2023 merged
+├── 31 Dec 2023 qiime
+├── 06 Dec 2023 raw
+├── 29 Dec 2023 trimmed
+└── 29 Dec 2023 unpaired

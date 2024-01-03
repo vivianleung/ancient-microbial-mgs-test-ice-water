@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 9967804
+total bases: 1505138404
+Q20 bases: 1276987335(84.8419%)
+Q30 bases: 1147646099(76.2485%)
+
+Read2 before filtering:
+total reads: 9967804
+total bases: 1505138404
+Q20 bases: 1306726357(86.8177%)
+Q30 bases: 1181077336(78.4697%)
+
+Read1 after filtering:
+total reads: 6852636
+total bases: 642331721
+Q20 bases: 600023063(93.4133%)
+Q30 bases: 552787086(86.0594%)
+
+Read2 after filtering:
+total reads: 6852636
+total bases: 642865365
+Q20 bases: 617420836(96.042%)
+Q30 bases: 582335243(90.5843%)
+
+Filtering result:
+reads passed filter: 13705272
+reads failed due to low quality: 3437436
+reads failed due to too many N: 126
+reads failed due to too short: 2792774
+reads with adapter trimmed: 14896438
+bases trimmed due to adapters: 900869427
+
+Duplication rate: 2.1708%
+
+Insert size peak (evaluated by paired-end reads): 74
+
+JSON report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-9a.fp.json
+HTML report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-9a.fp.html
+
+fastp -i ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-9a.1.XlroEm -I ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-9a.2.QYoviE -o /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-9a_1.trimmed.fq.gz -O /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-9a_2.trimmed.fq.gz --unpaired1 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-9a_1.unpaired.fq.gz --unpaired2 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-9a_2.unpaired.fq.gz --report_title Water-9a trim and QC --json /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-9a.fp.json --html /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-9a.fp.html --qualified_quality_phred 20 --length_required 50 --thread 4 
+fastp v0.23.4, time used: 40 seconds

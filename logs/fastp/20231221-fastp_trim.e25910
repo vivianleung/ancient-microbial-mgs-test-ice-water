@@ -1,0 +1,17 @@
+
+Loaded GNU Parallel v20221222 to your environment. See $GNU_PARALLEL_DOCPATH for documentation, or run 'man parallel'. 
+Run 'parallel --citation' for how to cite this program.
+
+================  20231221-fastp_ice : Job ID : 25910  ================
+[2023 Dec  7 - 19:49:46 HKT] Running job 9 - Water-Neg2...done (27.6s).[2023 Dec  7 - 19:49:46 HKT] Running job 1 - Water-2a...done (29.3s).
+[2023 Dec  7 - 19:49:46 HKT] Running job 3 - Water-5a...done (42.0s).
+[2023 Dec  7 - 19:49:46 HKT] Running job 6 - Water-9a...done (43.3s).
+[2023 Dec  7 - 19:49:46 HKT] Running job 5 - Water-7a...done (44.8s).[2023 Dec  7 - 19:49:46 HKT] Running job 2 - Water-3a...done (53.8s).
+[2023 Dec  7 - 19:49:46 HKT] Running job 4 - Water-6a...done (58.1s).
+[2023 Dec  7 - 19:49:46 HKT] Running job 8 - Water-Neg1...done (1m 4.1s).
+[2023 Dec  7 - 19:49:46 HKT] Running job 7 - Water-10a...done (1m 6.9s).
+[2023 Dec  7 - 19:50:14 HKT] Running job 10 - Water-Neg3...done (52.7s).
+
+------------------------------
+Duration: 1 minutes, 21 seconds
+Job Finish Time is Thu Dec 21 19:51:07 2023.

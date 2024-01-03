@@ -1,0 +1,17 @@
+
+Loaded GNU Parallel v20221222 to your environment. See $GNU_PARALLEL_DOCPATH for documentation, or run 'man parallel'. 
+Run 'parallel --citation' for how to cite this program.
+
+================  20231229-merged : Job ID : 26118  ================
+[2023 Dec 10 - 10:30:57 HKT] Running job 2 - Water-Neg2...done (16.2s).[2023 Dec 10 - 10:30:57 HKT] Running job 4 - Water-2a...done (21.4s).[2023 Dec 10 - 10:30:57 HKT] Running job 8 - Water-7a...done (27.4s).
+[2023 Dec 10 - 10:30:57 HKT] Running job 9 - Water-9a...done (27.6s).
+[2023 Dec 10 - 10:30:57 HKT] Running job 6 - Water-5a...done (31.1s).
+[2023 Dec 10 - 10:30:57 HKT] Running job 3 - Water-Neg3...done (33.0s).
+[2023 Dec 10 - 10:30:57 HKT] Running job 1 - Water-Neg1...done (33.3s).
+[2023 Dec 10 - 10:30:57 HKT] Running job 7 - Water-6a...done (36.1s).
+[2023 Dec 10 - 10:31:14 HKT] Running job 10 - Water-10a...done (23.0s).
+[2023 Dec 10 - 10:30:57 HKT] Running job 5 - Water-3a...done (57.7s).
+
+------------------------------
+Duration: 1 minutes, 3 seconds
+Job Finish Time is Fri Dec 29 10:31:55 2023.

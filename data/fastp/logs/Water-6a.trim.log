@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 14922435
+total bases: 2253287685
+Q20 bases: 2024895576(89.8641%)
+Q30 bases: 1845290884(81.8933%)
+
+Read2 before filtering:
+total reads: 14922435
+total bases: 2253287685
+Q20 bases: 2002557631(88.8727%)
+Q30 bases: 1835206330(81.4457%)
+
+Read1 after filtering:
+total reads: 11118136
+total bases: 1174494763
+Q20 bases: 1114322123(94.8767%)
+Q30 bases: 1040193007(88.5651%)
+
+Read2 after filtering:
+total reads: 11118136
+total bases: 1174192039
+Q20 bases: 1133678997(96.5497%)
+Q30 bases: 1073263678(91.4044%)
+
+Filtering result:
+reads passed filter: 22236272
+reads failed due to low quality: 4625160
+reads failed due to too many N: 194
+reads failed due to too short: 2983244
+reads with adapter trimmed: 20414754
+bases trimmed due to adapters: 1141979937
+
+Duplication rate: 5.32495%
+
+Insert size peak (evaluated by paired-end reads): 74
+
+JSON report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-6a.fp.json
+HTML report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-6a.fp.html
+
+fastp -i ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-6a.1.hXaAcH -I ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-6a.2.yQw8Qg -o /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-6a_1.trimmed.fq.gz -O /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-6a_2.trimmed.fq.gz --unpaired1 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-6a_1.unpaired.fq.gz --unpaired2 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-6a_2.unpaired.fq.gz --report_title Water-6a trim and QC --json /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-6a.fp.json --html /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-6a.fp.html --qualified_quality_phred 20 --length_required 50 --thread 4 
+fastp v0.23.4, time used: 54 seconds

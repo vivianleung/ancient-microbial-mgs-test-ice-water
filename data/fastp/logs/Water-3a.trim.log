@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 13186098
+total bases: 1991100798
+Q20 bases: 1861998402(93.516%)
+Q30 bases: 1771250773(88.9584%)
+
+Read2 before filtering:
+total reads: 13186098
+total bases: 1991100798
+Q20 bases: 1854041738(93.1164%)
+Q30 bases: 1731427015(86.9583%)
+
+Read1 after filtering:
+total reads: 11650429
+total bases: 1714609548
+Q20 bases: 1672378076(97.537%)
+Q30 bases: 1609095227(93.8462%)
+
+Read2 after filtering:
+total reads: 11650429
+total bases: 1715735829
+Q20 bases: 1666448606(97.1273%)
+Q30 bases: 1574739344(91.7822%)
+
+Filtering result:
+reads passed filter: 23300858
+reads failed due to low quality: 2872986
+reads failed due to too many N: 220
+reads failed due to too short: 198132
+reads with adapter trimmed: 2173442
+bases trimmed due to adapters: 90757073
+
+Duplication rate: 12.8714%
+
+Insert size peak (evaluated by paired-end reads): 236
+
+JSON report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-3a.fp.json
+HTML report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-3a.fp.html
+
+fastp -i ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-3a.1.JxMxUu -I ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-3a.2.xxJyNw -o /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-3a_1.trimmed.fq.gz -O /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-3a_2.trimmed.fq.gz --unpaired1 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-3a_1.unpaired.fq.gz --unpaired2 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-3a_2.unpaired.fq.gz --report_title Water-3a trim and QC --json /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-3a.fp.json --html /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-3a.fp.html --qualified_quality_phred 20 --length_required 50 --thread 4 
+fastp v0.23.4, time used: 47 seconds

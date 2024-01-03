@@ -1,0 +1,19 @@
+
+Loaded GNU Parallel v20221222 to your environment. See $GNU_PARALLEL_DOCPATH for documentation, or run 'man parallel'. 
+Run 'parallel --citation' for how to cite this program.
+
+================  20231229-fastp_trim_qc : Job ID : 26115  ================
+[2023 Dec 10 - 10:20:57 HKT] Running job 4 - Water-2a...done (56.9s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 2 - Water-Neg2...done (1m 7.1s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 6 - Water-5a...done (1m 45.2s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 8 - Water-7a...done (1m 47.6s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 9 - Water-9a...done (1m 52.8s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 3 - Water-Neg3...done (2m 26.3s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 5 - Water-3a...done (2m 29.0s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 1 - Water-Neg1...done (2m 34.0s).
+[2023 Dec 10 - 10:20:57 HKT] Running job 7 - Water-6a...done (2m 43.9s).
+[2023 Dec 10 - 10:21:53 HKT] Running job 10 - Water-10a...done (2m 43.4s).
+
+------------------------------
+Duration: 3 minutes, 41 seconds
+Job Finish Time is Fri Dec 29 10:24:37 2023.

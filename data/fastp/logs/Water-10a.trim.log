@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 14457881
+total bases: 2183140031
+Q20 bases: 1852966889(84.8762%)
+Q30 bases: 1671779637(76.5768%)
+
+Read2 before filtering:
+total reads: 14457881
+total bases: 2183140031
+Q20 bases: 1850792828(84.7766%)
+Q30 bases: 1653473084(75.7383%)
+
+Read1 after filtering:
+total reads: 9702797
+total bases: 918045378
+Q20 bases: 859804430(93.656%)
+Q30 bases: 794262183(86.5167%)
+
+Read2 after filtering:
+total reads: 9702797
+total bases: 918292755
+Q20 bases: 867434272(94.4616%)
+Q30 bases: 811796621(88.4028%)
+
+Filtering result:
+reads passed filter: 19405594
+reads failed due to low quality: 5495490
+reads failed due to too many N: 148
+reads failed due to too short: 4014530
+reads with adapter trimmed: 21334270
+bases trimmed due to adapters: 1283380465
+
+Duplication rate: 2.37609%
+
+Insert size peak (evaluated by paired-end reads): 74
+
+JSON report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-10a.fp.json
+HTML report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-10a.fp.html
+
+fastp -i ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-10a.1.GwaEg2 -I ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-10a.2.mo4bQs -o /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-10a_1.trimmed.fq.gz -O /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-10a_2.trimmed.fq.gz --unpaired1 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-10a_1.unpaired.fq.gz --unpaired2 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-10a_2.unpaired.fq.gz --report_title Water-10a trim and QC --json /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-10a.fp.json --html /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-10a.fp.html --qualified_quality_phred 20 --length_required 50 --thread 4 
+fastp v0.23.4, time used: 59 seconds

@@ -1,0 +1,17 @@
+*.[tc]sv
+*.fast[agq]
+*.f[agq]
+*.[bv]cf
+*.gvcf
+*.gff
+*.gff3
+*.qza
+*.gz
+*.tar
+tmp.*/
+
+!notes*
+!readme*
+!manifest*
+!roster*
+!.gitignore

@@ -1,0 +1,39 @@
+Read1 before filtering:
+total reads: 4444759
+total bases: 411320220
+Q20 bases: 384965423(93.5926%)
+Q30 bases: 355468779(86.4214%)
+
+Read2 before filtering:
+total reads: 4444759
+total bases: 411157205
+Q20 bases: 394832682(96.0296%)
+Q30 bases: 372881494(90.6907%)
+
+Merged and filtered:
+total reads: 4297755
+total bases: 395858127
+Q20 bases: 375920936(94.9636%)
+Q30 bases: 348520976(88.0419%)
+
+Filtering result:
+reads passed filter: 8889518
+reads failed due to low quality: 0
+reads failed due to too many N: 0
+reads corrected by overlap analysis: 1405215
+bases corrected by overlap analysis: 4160832
+
+Duplication rate: 15.6453%
+
+Insert size peak (evaluated by paired-end reads): 74
+
+Read pairs merged: 4297755
+% of original read pairs: 96.6926%
+% in reads after filtering: 100%
+
+
+JSON report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/fastp/Water-Neg2.fp.json
+HTML report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/fastp/Water-Neg2.fp.html
+
+fastp -i Water-Neg2_1.trimmed.fq.gz -I Water-Neg2_2.trimmed.fq.gz -o /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/merged/Water-Neg2_1.unmerged.fq.gz -O /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/merged/Water-Neg2_2.unmerged.fq.gz --merged_out /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/merged/Water-Neg2.merged.fq.gz --json /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/fastp/Water-Neg2.fp.json --html /home/d24h_prog2/data_share/ice_water/jobs/20231229-merged-26118/fastp/Water-Neg2.fp.html --merge --disable_adapter_trimming --disable_length_filtering --disable_quality_filtering --disable_trim_poly_g --thread 4 
+fastp v0.23.4, time used: 16 seconds

@@ -1,0 +1,7 @@
+================  20231230-deblur_denoise_filtered : Job ID : 26133  ================
+=>> PBS: job killed: walltime 144039 exceeded limit 144000
+/home/d24h_prog2/vivian/utils/pbsutils.sh: line 49: 29611 Terminated              qiime deblur denoise-16S --i-demultiplexed-seqs demux-filtered.qza --p-trim-length 130 --p-left-trim-len 29 --p-sample-stats --o-table /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-table.filtered.qza --o-representative-sequences /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-rep_seqs.filtered.qza --o-stats /home/d24h_prog2/data_share/ice_water/jobs/20231230-deblur_denoise_filtered-26133/deblur_denoise-stats.filtered.qza
+
+------------------------------
+Duration: 1 days, 16 hours, 40 seconds
+Job Finish Time is Mon Jan  1 13:53:22 2024.

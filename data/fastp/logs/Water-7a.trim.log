@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 9741733
+total bases: 1471001683
+Q20 bases: 1272957920(86.5368%)
+Q30 bases: 1133046908(77.0255%)
+
+Read2 before filtering:
+total reads: 9741733
+total bases: 1471001683
+Q20 bases: 1244986933(84.6353%)
+Q30 bases: 1108878912(75.3826%)
+
+Read1 after filtering:
+total reads: 7239626
+total bases: 841132462
+Q20 bases: 777203644(92.3997%)
+Q30 bases: 709164307(84.3107%)
+
+Read2 after filtering:
+total reads: 7239626
+total bases: 841442579
+Q20 bases: 775971700(92.2192%)
+Q30 bases: 711117017(84.5117%)
+
+Filtering result:
+reads passed filter: 14479252
+reads failed due to low quality: 3086792
+reads failed due to too many N: 116
+reads failed due to too short: 1917306
+reads with adapter trimmed: 10225670
+bases trimmed due to adapters: 590239582
+
+Duplication rate: 4.40876%
+
+Insert size peak (evaluated by paired-end reads): 155
+
+JSON report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-7a.fp.json
+HTML report: /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-7a.fp.html
+
+fastp -i ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-7a.1.q7kSlK -I ../jobs/20231229-fastp_trim_qc-26115/tmp.xlyitHeC5x/Water-7a.2.iig1IG -o /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-7a_1.trimmed.fq.gz -O /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-7a_2.trimmed.fq.gz --unpaired1 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-7a_1.unpaired.fq.gz --unpaired2 /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/trimmed/Water-7a_2.unpaired.fq.gz --report_title Water-7a trim and QC --json /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-7a.fp.json --html /home/d24h_prog2/data_share/ice_water/jobs/20231229-fastp_trim_qc-26115/fastp/Water-7a.fp.html --qualified_quality_phred 20 --length_required 50 --thread 4 
+fastp v0.23.4, time used: 35 seconds

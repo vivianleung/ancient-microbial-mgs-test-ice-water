@@ -1,0 +1,91 @@
+================  20231230-filter_raw_PE : Job ID : 26128  ================
+1 nodes.
+1 CPUs allocated: hpc-sn001.cm.cluster
+4 threads.
+This PBS script is running on host hpc-sn001
+Working directory is /home/d24h_prog2/data_share/ice_water/logs
+
+Date is Sat Dec 30 20:44:36 2023
+
+Environment: /home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9
+
+No Modulefiles Currently Loaded.
+
+Dry run:         n
+Keep temp files: n
+================  Input/Output  ================
+Input
+-------------------
+input_dir   : /home/d24h_prog2/data_share/ice_water/qiime
+input_demux : demux-PE.qza
+
+Output directories
+-------------------
+main : /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128
+qscore_filter_stats   : /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/filter_stats-PE.qza
+qscore_filtered_demux : /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/demux-filtered-PE.qza
+
+============== Programs in Use ==============
+> qiime:  q2cli version 2023.9.1
+Run `qiime info` for more version details.
+/home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9/bin/qiime
+System versions
+Python version: 3.8.15
+QIIME 2 release: 2023.9
+QIIME 2 version: 2023.9.2
+q2cli version: 2023.9.1
+
+Installed plugins
+alignment: 2023.9.0
+composition: 2023.9.0
+cutadapt: 2023.9.0
+dada2: 2023.9.0
+deblur: 2023.9.0
+demux: 2023.9.1
+diversity: 2023.9.0
+diversity-lib: 2023.9.0
+emperor: 2023.9.0
+feature-classifier: 2023.9.0
+feature-table: 2023.9.0
+fragment-insertion: 2023.9.0
+longitudinal: 2023.9.1
+metadata: 2023.9.0
+phylogeny: 2023.9.0
+quality-control: 2023.9.0
+quality-filter: 2023.9.0
+sample-classifier: 2023.9.0
+taxa: 2023.9.0
+types: 2023.9.0
+vsearch: 2023.9.0
+
+Application config directory
+/home/d24h_prog2/miniconda3/envs/qiime2-amplicon-2023.9/var/q2cli
+
+Getting help
+To get help with QIIME 2, visit https://qiime2.org
+
+============ Common Command Params ============
+> qiime:
+qiime quality-filter q-score
+--i-demux demux-PE.qza
+--o-filtered-sequences /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/demux-filtered-PE.qza
+--o-filter-stats /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/filter_stats-PE.qza && qiime demux summarize
+--i-data /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/demux-filtered-PE.qza
+--o-visualization /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/demux-filtered-PE.qzv && qiime metadata tabulate
+--m-input-file /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/filter_stats-PE.qza
+--o-visualization /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/filter_stats-PE.qzv
+
+
+============== EXECUTING..... ==============
+Temp dir created: ../jobs/20231230-filter_raw_PE-26128/tmp.xnWWcSiq5I
+Saved SampleData[SequencesWithQuality] to: /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/demux-filtered-PE.qza
+Saved QualityFilterStats to: /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/filter_stats-PE.qza
+Saved Visualization to: /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/demux-filtered-PE.qzv
+Saved Visualization to: /home/d24h_prog2/data_share/ice_water/jobs/20231230-filter_raw_PE-26128/filter_stats-PE.qzv
+------------------------------
+Processed 1 of 1 entries, with
+    1 passed
+    0 failed
+    0 remaining (not processed).
+Duration: 4 hours, 12 minutes, 48 seconds
+Job Finish Time is Sun Dec 31 00:57:22 2023.

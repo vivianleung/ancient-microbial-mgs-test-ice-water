@@ -1,0 +1,421 @@
+#!/usr/bin/env bash
+
+# fastp.pbs
+
+# Run fastp in parallel
+
+# Vivian Leung
+# Created:       27 Oct 2023
+# Last updated:  21 Dec 2023
+# Last used:     21 Dec 2023
+
+### Job name
+### Queue name (qaussian): stdq1, medq1, fatq1 or gpuq1
+### Wall time required (between 00:00:01 to 336:00:00).
+### Number of CPUs: ppn: up to 40 for stdq1, 48 for gpuq1, 64 for medq1 and fatq1
+### Memory: up to 750gb for stdq1, 1000gb for medq1 and gpuq1, 3000gb for fatq1
+
+#__ PBS -N 20231229-fastp_trim_Qc
+#PBS -N 20231229-merged
+#PBS -q quickq1
+#PBS -l walltime=6:00:00
+#PBS -l select=1:ncpus=40:mem=750gb
+
+## Generally fixed settings
+#__PBS -M vivian
+#__PBS -m ae
+#PBS -M leungvw@connect.hku.hk
+#PBS -v MODULEPATH
+
+### Declare job non-rerunable
+#PBS -r n
+#PBS -k oed
+
+#######
+set -e
+set -o nounset
+set -o errtrace
+set -o pipefail
+
+export start_time=$(date +'%s.%N') DRY_RUN= KEEP_TMP= NO_TMPDIR=
+
+DRY_RUN='n'
+KEEP_TMP='n'
+NO_TMPDIR=1
+# NO_TMPDIR=0  # don't make tmpdir   # for socket
+
+############ SPECS AND PARAMS ############
+
+# I/O
+
+# constants exports for pbsutils and jobs
+export PROJECT_DIR DATA_DIR OUT_DIR ROSTER
+declare -A INPATHS OUT_DIRS OUTFILES
+
+# key directories
+PROJECT_DIR="/home/d24h_prog2/data_share/ice_water"
+DATA_DIR="$PROJECT_DIR"
+
+
+# # Headerless txt with [BV]CF relpaths (relative to input dir)
+export INPUT_DIR="$DATA_DIR/trimmed"
+
+# tsv of paired or single ended fastqs
+ROSTER="$INPUT_DIR/fastqs.tsv"
+
+# assoc array for easier logging
+INPATHS=(
+    [roster]="$ROSTER"
+    [input_dir]="$INPUT_DIR"
+)
+
+# Job output dir
+OUT_DIR="${DATA_DIR}/jobs/${PBS_JOBNAME}-${PBS_JOBID%%.*}"
+
+export FQ_DIR="$OUT_DIR/merged"
+export FASTP_DIR="$OUT_DIR/fastp"
+export LOG_DIR="${FASTP_DIR}/logs"
+
+# output dirs to make
+OUT_DIRS=(
+    [main]="${OUT_DIR}"
+    [merged]="$FQ_DIR"
+    [fastp_json_and_html]="${FASTP_DIR}"
+    [log]="$LOG_DIR"
+)
+
+# environment settings
+declare CONDA_ENV MODULES
+
+CONDA_ENV="vivian-biotools"
+MODULES=(
+    'vivian/parallel/20221222'
+)
+
+# Exports: duration timestamp print_array print_params set_conda_env
+#          DEFAULT_CONDA_PREFIX
+# run /home/d24h_prog2/vivian/utils/utils.sh --help for helpdoc
+source "/home/d24h_prog2/vivian/utils/utils.sh"
+
+
+# GNU Parallel params
+declare PARALLEL_JOBLOG THREADS_PER_JOB
+declare -a COMMON_PARALLEL_PARAMS COMMON_JOB_PARAMS
+
+# PARALLEL_JOBLOG="$DATA_DIR/joblog"
+# INPATHS[joblog]="$PARALLEL_JOBLOG"
+
+THREADS_PER_JOB=4
+
+COMMON_PARALLEL_PARAMS=(
+    --resume-failed
+    --halt soon,fail=3
+    --colsep $'\t'
+    --jobs $(( (OMP_NUM_THREADS - 1) / THREADS_PER_JOB ))
+
+)
+
+# i/o flags and options on run
+declare -a COMMON_JOB_ARGS=(
+  run_merge {1} {2} --merge --disable_adapter_trimming --disable_length_filtering --disable_quality_filtering --disable_trim_poly_g
+  --thread $THREADS_PER_JOB
+
+)
+  # run_trim_qc {1} {2} --qualified_quality_phred 20 --length_required 50
+  
+############ UTILS AND FUNCTIONS  ############
+# put things like path generation here
+
+# fq_basename () { basename "$1" | sed -E 's/(_[12])?\.(fq|fastq)(\.gz)?$//' ; }
+fq_basename () { basename "$1" | sed -E 's/(_[12])?(\.[^.]+)*\.(fq|fastq)(\.gz)?$//' ; }
+export -f fq_basename
+
+# File naming conventions
+# usage: string_report_title NAME
+string_report_title () { echo "${accession} trim and QC" ; }
+export -f string_report_title
+
+# usage: path_out_json ACCESSION_OR_FPATH
+path_out_json () { echo "$FASTP_DIR/$(fq_basename "$1").fp.json" ; }
+export -f path_out_json
+
+# usage: path_out_html ACCESSION_OR_FPATH
+path_out_html () { echo "$FASTP_DIR/$(fq_basename "$1").fp.html" ; }
+export -f path_out_html
+
+# usage: path_out_trimmed ACCESSION_OR_FPATH [READ]
+path_out_trimmed () { echo "$FQ_DIR/$(fq_basename "$1")${2:+_}${2:-}.trimmed.fq.gz" ; }
+export -f path_out_trimmed
+
+# usage: path_out_trimmed ACCESSION_OR_FPATH READ
+path_out_unpaired () { echo "$FQ_DIR/$(fq_basename "$1")_$2.unpaired.fq.gz" ; }
+export -f path_out_unpaired
+
+# usage: path_out_trimmed ACCESSION_OR_FPATH
+path_out_merged () { echo "$FQ_DIR/$(fq_basename "$1").merged.fq.gz" ; }
+export -f path_out_merged
+
+# usage: path_out_trimmed ACCESSION_OR_FPATH [READ]
+path_out_unmerged () { echo "$FQ_DIR/$(fq_basename "$1")_$2.unmerged.fq.gz" ; }
+export -f path_out_unmerged
+
+# examples
+OUTFILES[json]="$(path_out_json "ACCESSION")"
+OUTFILES[html]="$(path_out_html "ACCESSION")"
+# OUTFILES[trimmed_SE]="$(path_out_trimmed "ACCESSION")"
+# OUTFILES[trimmed_PE]="$(path_out_trimmed "ACCESSION" "READ")"
+# OUTFILES[unpaired_PE]="$(path_out_unpaired "ACCESSION" "READ")"
+OUTFILES[merged]="$(path_out_merged "ACCESSION")"
+OUTFILES[unmerged]="$(path_out_unmerged "ACCESSION" "READ")"
+
+# usage: test_gzip FPATH
+test_gzip () { gzip -t "$1" 2>&1 ; }
+export -f test_gzip
+
+
+# Usage: job_process_sample READ_1 [READ_2] [COMMAND_PARAMS ...]
+run_trim_qc () {
+
+  set -e
+  set -o nounset
+  set -o errtrace
+
+  local p=$(date +'%s.%N') 
+  local -a tmpfiles=()
+  
+  trap "trap_finish_job '${tmpfiles[@]}'" EXIT
+  
+  local accession="$(fq_basename "$1")"
+
+  printf '%s Running job %d - %s...' "$(timestamp)" $PARALLEL_SEQ "$accession" \
+    | tee >(cat >&2)
+
+  # output files 
+  local -a io_args=()
+
+  local infq1= infq2= 
+
+  # ungzip if necessary
+  if [[ -z "$(gzip -t "$1" 2>&1)" ]] ; then
+    infq1="$(mktemp "$TMPDIR/${accession}.1.XXXXXX")"
+    tmpfiles+=("$infq1")
+    gzip -dc "$1" > "${infq1}"
+    trap "trap_finish_job '${tmpfiles[@]}'" EXIT
+  else
+    infq1="$1"
+  fi
+
+  if [[ -z "$(gzip -t "${2-}" 2>&1)" ]] ; then
+    infq2="$(mktemp "$TMPDIR/${accession}.2.XXXXXX")"
+    tmpfiles+=("$infq2")
+    gzip -dc "$2" > "${infq2}"
+    trap "trap_finish_job '${tmpfiles[@]}'" EXIT
+  elif [[ "${2-}" =~ ^-.+$ ]] ; then
+    infq2=""
+  else
+    infq2="${2-}"
+  fi
+  
+  
+  # is single-end
+  if [[ -z "${infq2}" ]] ; then
+  # if [[ -z "${infq2}" ]] ; then
+    io_args+=(
+      -i "${infq1}" 
+      -o "$(path_out_trimmed "$accession")"
+    )
+    shift
+  # is paired-end
+  else
+    io_args+=(
+      -i "${infq1}"
+      -I "${infq2}"
+      -o "$(path_out_trimmed "$accession" "1")"
+      -O "$(path_out_trimmed "$accession" "2")"
+      --unpaired1 "$(path_out_unpaired "$accession" 1)"
+      --unpaired2 "$(path_out_unpaired "$accession" 2)"
+    )
+    shift 2
+  fi
+
+  # logs
+  io_args+=(
+    --report_title "$(string_report_title "$accession")"
+    --json "$(path_out_json "$accession")"
+    --html "$(path_out_html "$accession")"
+  )
+  wait
+  # run
+  if ! is_dry_run ; then
+    fastp "${io_args[@]}" "$@" 2>"$LOG_DIR/$accession.log"
+  else
+    printf '(no action - dry run)...' | tee >(cat >&2)
+  fi
+  printf 'done (%s).' "$(duration $p -d 1)" | tee >(cat >&2)
+
+}
+declare -t run_trim_qc
+export -f run_trim_qc
+
+
+# Usage: job_process_sample READ_1 READ_2 [COMMAND_PARAMS ...]
+run_merge () {
+
+  set -e
+  set -o nounset
+  set -o errtrace
+
+  local p=$(date +'%s.%N')
+  
+  trap "trap_finish_job" EXIT
+  
+  local accession="$(fq_basename "$1")"
+
+  printf '%s Running job %d - %s...' "$(timestamp)" $PARALLEL_SEQ "$accession" \
+    | tee >(cat >&2)
+
+  # input/output files 
+  local -a io_args=(
+    # --report_title "$(string_report_title "$accession")"
+    -i "$1"
+    -I "$2"
+    -o "$(path_out_unmerged "$1" "1")"
+    -O "$(path_out_unmerged "$2" "2")"
+    --merged_out "$(path_out_merged "$1")"
+    --json "$(path_out_json "$1")"
+    --html "$(path_out_html "$1")"
+  )
+  shift 2
+
+  # run
+  if ! is_dry_run ; then
+    fastp "${io_args[@]}" "$@" 2>"$LOG_DIR/$accession.log"
+  else
+    printf '(no action - dry run)...' | tee >(cat >&2)
+  fi
+  printf 'done (%s).' "$(duration $p -d 1)" | tee >(cat >&2)
+
+}
+declare -t run_merge
+export -f run_merge
+
+
+############  STANDARD/FIXED SETUP  ############
+
+# Common utilities for PBS scripts
+
+# Export PBS variables for pbsutils
+export PBS_JOBNAME PBS_NODEFILE PBS_O_WORKDIR OMP_NUM_THREADS
+
+# remove junk in PATH (manually put in by others in ~/.bashrc)
+export PATH="$(clean_path "$PBS_O_PATH" -e '^\/home\/d24h_prog2\/' \
+        -i '^\/home\/d24h_prog2\/(\.conda|miniconda3|vivian)\/')"
+
+cd $PBS_O_WORKDIR
+
+# Parse PBS variables
+
+# export PBS variables for pbsutils
+export NPROCS NNODES NCORES JID
+
+NPROCS=$(wc -l < $PBS_NODEFILE)
+NNODES=$(uniq $PBS_NODEFILE | wc -l)
+NCORES=$((NPROCS / NNODES))
+JID="${PBS_JOBID%%.*}"
+
+# Parse input rosters and logs
+export roster n_samples
+if [[ -n "${ROSTER+foo}" ]] ; then
+    roster="$PBS_O_WORKDIR/$PBS_JOBNAME.$(basename "$ROSTER").$JID"
+    cp "$ROSTER" "$roster"
+    n_samples=$(wc -l <"${roster}")
+fi
+
+# export for pbsutils
+export joblog
+joblog="$PBS_O_WORKDIR/$PBS_JOBNAME.joblog.$JID"
+
+if [[ -n "${PARALLEL_JOBLOG:-}" ]] ; then
+  echo "Creating copy of input job log $PARALLEL_JOBLOG..."
+  cp "$PARALLEL_JOBLOG" "$joblog"
+fi
+
+# Save this pbs job script to jobs dir
+cp "$0" "$PBS_O_WORKDIR/$PBS_JOBNAME.pbs.$JID"
+
+##  Prep environment ##
+
+# init conda env
+set_conda_env "$CONDA_ENV"
+
+# import modules
+for mod in "${MODULES[@]}" ; do module load "${mod}" ; done
+
+# this must come after defining all of the below exported
+# exports: is_dry_run do_keep_tmp epilogue epilogue_simple trap_error
+#          trap_finish_job standard_prologue io_prologue
+source "/home/d24h_prog2/vivian/utils/pbsutils.sh"
+
+trap trap_error ERR
+trap epilogue EXIT
+
+# print info about PBS and environment
+standard_prologue
+
+io_prologue 'INPATHS' 'OUT_DIRS' 'OUTFILES'
+
+############  END OF STANDARD/FIXED SETUP  ############
+
+# Report params and programs
+cat <<-PROLOGUE_PROGRAMS_PARAMS
+
+	============== Programs in Use ==============
+	> GNU parallel : $([[ -n "$(which parallel)" ]] && parallel --version 2>&1)
+	$(which parallel)
+	$(which parcat)
+
+	> fastp:  $(fastp --version 2>&1)
+	$(which fastp)
+
+	============ Common Command Params ============
+	# > parallel:
+	# $( (( ${#COMMON_PARALLEL_PARAMS[@]} > 0 )) &&  print_params "${COMMON_PARALLEL_PARAMS[@]}" )
+
+	> fastp
+	$( (( ${#COMMON_JOB_ARGS[@]} > 0 )) &&  print_params "${COMMON_JOB_ARGS[@]}" )
+
+	Threads per job:   ${THREADS_PER_JOB:-}
+
+	Joblog: ${JOBLOG-$joblog}
+PROLOGUE_PROGRAMS_PARAMS
+
+
+####################  EXECUTE  ####################
+
+printf "============== EXECUTING..... ==============\n"
+
+# make output dirs
+mkdir -p "${OUT_DIR}"
+mkdir -pv "${OUT_DIRS[@]}"
+
+# make tmpdir
+if [[ ${NO_TMPDIR:-0} == 0  ]] ; then
+  TMPDIR="$(mktemp -d)"
+else
+  mktempdir
+# shorten path
+  export TMPDIR="$(realpath --relative-to="${INPUT_DIR}" $TMPDIR)"
+fi
+
+# important: go to directory
+cd "${INPUT_DIR}"
+
+printf '%s Running fastp\n' "$(timestamp)"
+
+[[ -z "${n_samples:-}" ]] || printf '%s %d samples\n' "$(timestamp)" ${n_samples}
+
+
+parallel "${COMMON_PARALLEL_PARAMS[@]}" --joblog "$joblog" \
+    "${COMMON_JOB_ARGS[@]}" :::: "$roster"
+wait
+
