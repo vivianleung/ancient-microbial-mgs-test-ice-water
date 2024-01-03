@@ -77,7 +77,7 @@ export LOG_DIR="${OUT_DIR}/logs"
 # output dirs to make
 OUT_DIRS=(
     [main]="${OUT_DIR}"
-    [classified]="$OUT_DIR"
+    [kraken]="$OUT_DIR"
     [seqs]="$SEQS_DIR"
     [log]="$LOG_DIR"
 )
@@ -117,7 +117,7 @@ COMMON_PARALLEL_PARAMS=(
 
 # i/o flags and options on run
 declare -a COMMON_JOB_ARGS=(
-  'kraken2 --db "$DBNAME" --use-names --paired --threads "$THREADS_PER_JOB" --gzip-compressed --output "$(path_classified_out {1})" --classified-out "$(path_classified_seqs {1})" --unclassified-out "$(path_unclassified_seqs {1})" {1} {2} 2>"$(path_log {1})"'
+  'kraken2 --db "$DBNAME" --use-names --paired --threads "$THREADS_PER_JOB" --gzip-compressed --output "$(path_kraken {1})" --classified-out "$(path_classified_seqs {1})" --unclassified-out "$(path_unclassified_seqs {1})" {1} {2} 2>"$(path_log {1})"'
 )
 
   
@@ -130,11 +130,11 @@ export -f fq_basename
 
 # File naming conventions
 
-# usage: path_classified_out ACCESSION_OR_FPATH
-path_classified_out () {
+# usage: path_kraken ACCESSION_OR_FPATH
+path_kraken () {
     echo "${OUT_DIR}/$(fq_basename "$1").classed.tsv"
 }
-export -f path_classified_out
+export -f path_kraken
 
 # usage: path_classified_seqs ACCESSION_OR_FPATH
 path_classified_seqs () {
@@ -156,7 +156,7 @@ export -f path_log
 
 # examples
 OUTFILES+=(
-  [kraken2_classification]="$(path_classified_out NAME)"
+  [kraken2_classification]="$(path_kraken NAME)"
   [classified_seqs]="$(path_classified_seqs NAME)"
   [unclassified_seqs]="$(path_unclassified_seqs NAME)"
   [log]="$(path_log NAME)"

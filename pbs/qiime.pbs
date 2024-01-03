@@ -214,7 +214,7 @@ for mod in "${MODULES[@]}" ; do module load "${mod}" ; done
 source "/home/d24h_prog2/vivian/utils/pbsutils.sh"
 
 trap trap_error ERR
-trap epilogue EXIT
+trap epilogue_simple EXIT
 
 # print info about PBS and environment
 standard_prologue
