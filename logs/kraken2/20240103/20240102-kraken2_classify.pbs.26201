@@ -5,9 +5,9 @@
 # Run kraken2 in parallel
 
 # Vivian Leung
-# Created:       27 Oct 2023
-# Last updated:  21 Dec 2023
-# Last used:     21 Dec 2023
+# Created:       03 Jan 2024
+# Last updated:  03 Jan 2024
+# Last used:     03 Jan 2024
 
 ### Job name
 ### Queue name (qaussian): stdq1, medq1, fatq1 or gpuq1
@@ -15,10 +15,9 @@
 ### Number of CPUs: ppn: up to 40 for stdq1, 48 for gpuq1, 64 for medq1 and fatq1
 ### Memory: up to 750gb for stdq1, 1000gb for medq1 and gpuq1, 3000gb for fatq1
 
-#__ PBS -N 20231229-kraken2_trim_Qc
-#PBS -N 20231229-merged
-#PBS -q quickq1
-#PBS -l walltime=6:00:00
+#PBS -N 20240102-kraken2_classify
+#PBS -q stdq1
+#PBS -l walltime=200:00:00
 #PBS -l select=1:ncpus=40:mem=750gb
 
 ## Generally fixed settings
@@ -49,45 +48,44 @@ NO_TMPDIR=1
 # I/O
 
 # constants exports for pbsutils and jobs
-export PROJECT_DIR DATA_DIR OUT_DIR ROSTER
+export PROJECT_DIR DATA_DIR INPUT_DIR OUT_DIR ROSTER
 declare -A INPATHS OUT_DIRS OUTFILES
 
 # key directories
 PROJECT_DIR="/home/d24h_prog2/data_share/ice_water"
-DATA_DIR="$PROJECT_DIR"
+DATA_DIR="$PROJECT_DIR/data"
+INPUT_DIR="$DATA_DIR/trimmed"
 
+# # Headerless tsv with paired fastqs relpaths (relative to input dir)
+ROSTER="$INPUT_DIR/trimmed_fqs.tsv"
 
-# # Headerless txt with [BV]CF relpaths (relative to input dir)
-export INPUT_DIR="$DATA_DIR/trimmed"
-
-# tsv of paired or single ended fastqs
-ROSTER="$INPUT_DIR/fastqs.tsv"
+export DBNAME=/home/d24h_prog2/PUBLIC_DB/kraken2/archaea_bacteria_et_al
 
 # assoc array for easier logging
 INPATHS=(
     [roster]="$ROSTER"
     [input_dir]="$INPUT_DIR"
+    [dbname]="$DBNAME"
 )
 
 # Job output dir
-OUT_DIR="${DATA_DIR}/jobs/${PBS_JOBNAME}-${PBS_JOBID%%.*}"
+OUT_DIR="${PROJECT_DIR}/jobs/${PBS_JOBNAME}-${PBS_JOBID%%.*}"
 
-export FQ_DIR="$OUT_DIR/merged"
-export kraken2_DIR="$OUT_DIR/kraken2"
-export LOG_DIR="${kraken2_DIR}/logs"
+export SEQS_DIR="${OUT_DIR}/seqs"
+export LOG_DIR="${OUT_DIR}/logs"
 
 # output dirs to make
 OUT_DIRS=(
     [main]="${OUT_DIR}"
-    [merged]="$FQ_DIR"
-    [kraken2_json_and_html]="${kraken2_DIR}"
+    [classified]="$OUT_DIR"
+    [seqs]="$SEQS_DIR"
     [log]="$LOG_DIR"
 )
 
 # environment settings
 declare CONDA_ENV MODULES
 
-CONDA_ENV="vivian-biotools"
+CONDA_ENV="vivian"
 MODULES=(
     'vivian/parallel/20221222'
     'vivian/kraken2/2.1.3'
@@ -100,13 +98,14 @@ source "/home/d24h_prog2/vivian/utils/utils.sh"
 
 
 # GNU Parallel params
-declare PARALLEL_JOBLOG THREADS_PER_JOB
+declare PARALLEL_JOBLOG
 declare -a COMMON_PARALLEL_PARAMS COMMON_JOB_PARAMS
+export THREADS_PER_JOB
 
 # PARALLEL_JOBLOG="$DATA_DIR/joblog"
 # INPATHS[joblog]="$PARALLEL_JOBLOG"
 
-THREADS_PER_JOB=4
+THREADS_PER_JOB=19
 
 COMMON_PARALLEL_PARAMS=(
     --resume-failed
@@ -118,11 +117,9 @@ COMMON_PARALLEL_PARAMS=(
 
 # i/o flags and options on run
 declare -a COMMON_JOB_ARGS=(
-
-  --thread $THREADS_PER_JOB
-
+  'kraken2 --db "$DBNAME" --use-names --paired --threads "$THREADS_PER_JOB" --gzip-compressed --output "$(path_classified_out {1})" --classified-out "$(path_classified_seqs {1})" --unclassified-out "$(path_unclassified_seqs {1})" {1} {2} 2>"$(path_log {1})"'
 )
-  # run_trim_qc {1} {2} --qualified_quality_phred 20 --length_required 50
+
   
 ############ UTILS AND FUNCTIONS  ############
 # put things like path generation here
@@ -133,16 +130,37 @@ export -f fq_basename
 
 # File naming conventions
 
-# usage: path_out_json ACCESSION_OR_FPATH
-path_out_json () { echo "$kraken2_DIR/$(fq_basename "$1").fp.json" ; }
-export -f path_out_json
+# usage: path_classified_out ACCESSION_OR_FPATH
+path_classified_out () {
+    echo "${OUT_DIR}/$(fq_basename "$1")#.classed.tsv"
+}
+export -f path_classified_out
 
+# usage: path_classified_seqs ACCESSION_OR_FPATH
+path_classified_seqs () {
+    echo "${SEQS_DIR}/$(fq_basename "$1")#.classed.fq"
+}
+export -f path_classified_seqs
+
+# usage: path_unclassified_seqs ACCESSION_OR_FPATH
+path_unclassified_seqs () {
+    echo "${SEQS_DIR}/$(fq_basename "$1")#.unclassed.fq"
+}
+export -f path_unclassified_seqs
+
+# usage: path_unclassified_seqs ACCESSION_OR_FPATH
+path_log () {
+    echo "${LOG_DIR}/$(fq_basename "$1").log"
+}
+export -f path_log
 
 # examples
-OUTFILES[json]="$(path_out_json "ACCESSION")"
-OUTFILES[html]="$(path_out_html "ACCESSION")"
-
-
+OUTFILES+=(
+  [kraken2_classification]="$(path_classified_out NAME)"
+  [classified_seqs]="$(path_classified_seqs NAME)"
+  [unclassified_seqs]="$(path_unclassified_seqs NAME)"
+  [log]="$(path_log NAME)"
+)
 
 ############  STANDARD/FIXED SETUP  ############
 
@@ -260,6 +278,6 @@ printf '%s Running kraken2\n' "$(timestamp)"
 
 
 parallel "${COMMON_PARALLEL_PARAMS[@]}" --joblog "$joblog" \
-    "${COMMON_JOB_ARGS[@]}" :::: "$roster"
+    ${COMMON_JOB_ARGS[@]} :::: "$roster"
 wait
 

@@ -1,6 +1,7 @@
 ######  Custom  ######
 tmp*/
 trash/
+/jobs/**
 
 # bio files
 *.fast[agq]
