@@ -2,6 +2,7 @@
 tmp*/
 trash/
 /jobs/**
+local/
 
 # bio files
 *.fast[agq]
