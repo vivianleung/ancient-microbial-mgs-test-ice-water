@@ -1,0 +1,19 @@
+ >> Checking for Valid Options...
+ >> Running Bracken 
+      >> python src/est_abundance.py -i Water-Neg1.kreport -o /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_species-26241/bracken/Water-Neg1.bracken -k /home/d24h_prog2/PUBLIC_DB/kraken2/standard/database75mers.kmer_distrib -l S -t 10
+>> Checking report file: Water-Neg1.kreport
+PROGRAM START TIME: 01-03-2024 10:41:30
+BRACKEN SUMMARY (Kraken report: Water-Neg1.kreport)
+    >>> Threshold: 10 
+    >>> Number of species in sample: 4368 
+	  >> Number of species with reads > threshold: 1218 
+	  >> Number of species with reads < threshold: 3150 
+    >>> Total reads in sample: 10231814
+	  >> Total reads kept at species level (reads > threshold): 640502
+	  >> Total reads discarded (species reads < threshold): 8604
+	  >> Reads distributed: 553564
+	  >> Reads not distributed (eg. no species above threshold): 214705
+	  >> Unclassified reads: 8814439
+BRACKEN OUTPUT PRODUCED: /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_species-26241/bracken/Water-Neg1.bracken
+PROGRAM END TIME: 01-03-2024 10:41:30
+  Bracken complete.

@@ -1,0 +1,19 @@
+ >> Checking for Valid Options...
+ >> Running Bracken 
+      >> python src/est_abundance.py -i Water-5a.kreport -o /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_75mers_species-26237/bracken/Water-5a.bracken -k /home/d24h_prog2/PUBLIC_DB/kraken2/archaea_bacteria_et_al/database75mers.kmer_distrib -l G -t 10
+>> Checking report file: Water-5a.kreport
+PROGRAM START TIME: 01-03-2024 10:26:21
+BRACKEN SUMMARY (Kraken report: Water-5a.kreport)
+    >>> Threshold: 10 
+    >>> Number of genuses in sample: 1604 
+	  >> Number of genuses with reads > threshold: 754 
+	  >> Number of genuses with reads < threshold: 850 
+    >>> Total reads in sample: 7416872
+	  >> Total reads kept at genuses level (reads > threshold): 2662271
+	  >> Total reads discarded (genuses reads < threshold): 2820
+	  >> Reads distributed: 240466
+	  >> Reads not distributed (eg. no genuses above threshold): 7271
+	  >> Unclassified reads: 4504044
+BRACKEN OUTPUT PRODUCED: /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_75mers_species-26237/bracken/Water-5a.bracken
+PROGRAM END TIME: 01-03-2024 10:26:21
+  Bracken complete.

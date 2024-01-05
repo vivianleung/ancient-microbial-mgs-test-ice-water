@@ -1,0 +1,21 @@
+
+Loaded GNU Parallel v20221222 to your environment. See $GNU_PARALLEL_DOCPATH for documentation, or run 'man parallel'. 
+Run 'parallel --citation' for how to cite this program.
+
+
+Loaded Kraken2 2.1.3 to your environment.
+
+
+Loaded Bracken 2.9 to your environment.
+
+================  20240102-bracken_100mers : Job ID : 26233  ================
+parallel: This job failed:
+bracken -r 100 -d ${KRAKEN_DB} -i kreports.txt -o "$(path_bracken kreports.txt)" -w "$(path_bracken_kreport kreports.txt)" 1>"$(path_log kreports.txt)" 2>&1
+
+[2024 Jan  6 - 18:15:46 HKT] Exiting with error code 1
+
+[2024 Jan  6 - 18:15:46 HKT] Cleaning up...done.
+
+------------------------------
+Duration: 2 seconds
+Job Finish Time is Wed Jan  3 18:15:46 2024.

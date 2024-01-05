@@ -8,7 +8,15 @@
 *.qza
 *.gz
 *.tar
+*.krona
+*.krona.html
+*.kreport
+*.kraken
+*.bracken
+
+
 tmp.*/
+
 
 !notes*
 !readme*

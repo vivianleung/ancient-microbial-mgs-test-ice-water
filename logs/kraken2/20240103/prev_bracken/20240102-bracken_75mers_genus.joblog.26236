@@ -1,0 +1,11 @@
+Seq	Host	Starttime	JobRuntime	Send	Receive	Exitval	Signal	Command
+2	:	1704277410.314	     0.198	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-Neg2.kreport -o "$(path_bracken Water-Neg2.kreport)" -w "$(path_bracken_kreport Water-Neg2.kreport)" 1>"$(path_log Water-Neg2.kreport)" 2>&1
+1	:	1704277410.311	     0.208	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-Neg1.kreport -o "$(path_bracken Water-Neg1.kreport)" -w "$(path_bracken_kreport Water-Neg1.kreport)" 1>"$(path_log Water-Neg1.kreport)" 2>&1
+4	:	1704277410.525	     0.172	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-2a.kreport -o "$(path_bracken Water-2a.kreport)" -w "$(path_bracken_kreport Water-2a.kreport)" 1>"$(path_log Water-2a.kreport)" 2>&1
+3	:	1704277410.518	     0.180	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-Neg3.kreport -o "$(path_bracken Water-Neg3.kreport)" -w "$(path_bracken_kreport Water-Neg3.kreport)" 1>"$(path_log Water-Neg3.kreport)" 2>&1
+6	:	1704277410.719	     0.194	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-5a.kreport -o "$(path_bracken Water-5a.kreport)" -w "$(path_bracken_kreport Water-5a.kreport)" 1>"$(path_log Water-5a.kreport)" 2>&1
+5	:	1704277410.715	     0.211	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-3a.kreport -o "$(path_bracken Water-3a.kreport)" -w "$(path_bracken_kreport Water-3a.kreport)" 1>"$(path_log Water-3a.kreport)" 2>&1
+8	:	1704277410.930	     0.184	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-7a.kreport -o "$(path_bracken Water-7a.kreport)" -w "$(path_bracken_kreport Water-7a.kreport)" 1>"$(path_log Water-7a.kreport)" 2>&1
+7	:	1704277410.919	     0.200	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-6a.kreport -o "$(path_bracken Water-6a.kreport)" -w "$(path_bracken_kreport Water-6a.kreport)" 1>"$(path_log Water-6a.kreport)" 2>&1
+10	:	1704277411.125	     0.187	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-10a.kreport -o "$(path_bracken Water-10a.kreport)" -w "$(path_bracken_kreport Water-10a.kreport)" 1>"$(path_log Water-10a.kreport)" 2>&1
+9	:	1704277411.120	     0.196	0	0	0	0	bracken -l G -r 75 -d ${KRAKEN_DB} -i Water-9a.kreport -o "$(path_bracken Water-9a.kreport)" -w "$(path_bracken_kreport Water-9a.kreport)" 1>"$(path_log Water-9a.kreport)" 2>&1

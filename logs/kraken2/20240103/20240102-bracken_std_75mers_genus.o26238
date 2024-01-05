@@ -1,0 +1,80 @@
+================  20240102-bracken_std_75mers_genus : Job ID : 26238  ================
+1 nodes.
+1 CPUs allocated: hpc-sn004.cm.cluster
+40 threads.
+This PBS script is running on host hpc-sn004
+Working directory is /home/d24h_prog2/data_share/ice_water/logs/kraken2/20240103
+
+Date is Wed Jan  3 18:35:42 2024
+
+Environment: /home/d24h_prog2/miniconda3/envs/vivian
+
+Currently Loaded Modulefiles:
+ 1) vivian/parallel/20221222   2) vivian/kraken2/2.1.3   3) vivian/bracken/2.9  
+
+Dry run:         n
+Keep temp files: n
+================  Input/Output  ================
+Input
+-------------------
+kraken_db : /home/d24h_prog2/PUBLIC_DB/kraken2/standard
+roster    : /home/d24h_prog2/data_share/ice_water/data/kraken/kreports/kreports.txt
+input_dir : /home/d24h_prog2/data_share/ice_water/data/kraken/kreports
+
+Output directories
+-------------------
+log          : /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238/blogs
+new_kreports : /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238/bracken_kreports
+bracken      : /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238/bracken
+main         : /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238
+log     : /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238/blogs/NAME.log
+bracken : /home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238/bracken/NAME.bracken
+
+============== Programs in Use ==============
+> GNU parallel : GNU parallel 20221222
+Copyright (C) 2007-2022 Ole Tange, http://ole.tange.dk and Free Software
+Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+GNU parallel comes with no warranty.
+
+Web site: https://www.gnu.org/software/parallel
+
+When using programs that use GNU Parallel to process data for publication
+please cite as described in 'parallel --citation'.
+/home/d24h_prog2/vivian/local/opt/GNU Parallel/20221222/bin/parallel
+/home/d24h_prog2/vivian/local/opt/GNU Parallel/20221222/bin/parcat
+
+> kraken2:  Kraken version 2.1.3
+Copyright 2013-2023, Derrick Wood (dwood@cs.jhu.edu)
+/home/d24h_prog2/vivian/local/opt/Kraken2/2.1.3/kraken2
+
+> bracken:  Bracken v2.9
+/home/d24h_prog2/vivian/local/opt/Bracken/2.9/bracken
+
+============ Common Command Params ============
+# > parallel:
+# --resume-failed
+--halt soon,fail=3
+--colsep 	
+--jobs 2
+
+> kraken2/bracken
+bracken -l G -r 75 -d ${KRAKEN_DB} -i {1} -o "$(path_bracken {1})" -w "$(path_bracken_kreport {1})" 1>"$(path_log {1})" 2>&1
+
+Threads per job:   19
+
+Joblog: /home/d24h_prog2/data_share/ice_water/logs/kraken2/20240103/20240102-bracken_std_75mers_genus.joblog.26238
+============== EXECUTING..... ==============
+mkdir: created directory '/home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238/blogs'
+mkdir: created directory '/home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238/bracken_kreports'
+mkdir: created directory '/home/d24h_prog2/data_share/ice_water/jobs/20240102-bracken_std_75mers_genus-26238/bracken'
+[2024 Jan  6 - 18:35:42 HKT] Running kraken2
+[2024 Jan  6 - 18:35:42 HKT] 10 samples
+------------------------------
+Processed 10 of 10 entries, with
+    10 passed
+    0 failed
+    0 remaining (not processed).
+Duration: 2 seconds
+Job Finish Time is Wed Jan  3 18:35:44 2024.
