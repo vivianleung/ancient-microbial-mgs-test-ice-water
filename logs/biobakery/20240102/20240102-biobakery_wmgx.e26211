@@ -1,0 +1,19 @@
+
+Loaded GNU Parallel v20221222 to your environment. See $GNU_PARALLEL_DOCPATH for documentation, or run 'man parallel'. 
+Run 'parallel --citation' for how to cite this program.
+
+================  20240102-biobakery_wmgx : Job ID : 26211  ================
+
+[2024 Jan  4 - 16:06:26 HKT] Exiting with error code 127
+
+[2024 Jan  4 - 16:06:26 HKT] Exiting with error code 1
+Traceback (most recent call last):
+  File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/bin/wmgx.py", line 181, in <module>
+    workflow.go()
+  File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/workflow.py", line 804, in go
+    self._handle_finished()
+  File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/workflow.py", line 836, in _handle_finished
+    raise RunFailed()
+anadama2.workflow.RunFailed
+Duration: 4 seconds
+Job Finish Time is Wed Jan  3 16:06:30 2024.

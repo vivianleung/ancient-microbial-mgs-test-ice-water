@@ -1,0 +1,772 @@
+================  20240102-biobakery_wmgx : Job ID : 26211  ================
+1 nodes.
+1 CPUs allocated: hpc-sn002.cm.cluster
+40 threads.
+This PBS script is running on host hpc-sn002
+Working directory is /home/d24h_prog2/data_share/ice_water/logs/biobakery/20240102
+
+Date is Wed Jan  3 16:06:26 2024
+
+Environment: /home/d24h_prog2/miniconda3/envs/vivian-biobakery
+
+Currently Loaded Modulefiles:
+ 1) vivian/parallel/20221222  
+
+Dry run:         n
+Keep temp files: n
+================  Input/Output  ================
+Input
+-------------------
+input_dir : /home/d24h_prog2/data_share/ice_water/data/trimmed_lns
+
+Output directories
+-------------------
+main : /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211
+
+
+============== Programs in Use ==============
+> biobakery:  /cm/local/apps/pbspro-ce/var/spool/mom_priv/jobs/26211.hpc-hn001.SC: line 161: biobakery: command not found
+
+[2024 Jan  4 - 16:06:26 HKT] Exiting with error code 127
+
+[2024 Jan  4 - 16:06:26 HKT] Exiting with error code 1
+
+> metaphlan:  MetaPhlAn version 4.0.6 (1 Mar 2023)
+/home/d24h_prog2/miniconda3/envs/vivian-biobakery/bin/metaphlan
+
+============ Common Command Params ============
+> biobakery
+biobakery_workflows wmgx
+--threads 40
+--local-jobs 4
+--input-extension fq.gz
+--input /home/d24h_prog2/data_share/ice_water/data/trimmed_lns
+--output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211
+
+============== EXECUTING..... ==============
+[2024 Jan  4 - 16:06:27 HKT] Running biobakery
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Started  ** Task   0: kneaddata____Water-10a
+(Jan 03 16:06:29) [ 68/116 -  58.62%] **Started  ** Task  19: kneaddata____Water-9a
+(Jan 03 16:06:29) [  0/116 -   0.00%] **Started  ** Task  10: kneaddata____Water-5a
+(Jan 03 16:06:29) [ 76/116 -  65.52%] **Started  ** Task  22: kneaddata____Water-Neg1
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Started  ** Task   4: kneaddata____Water-2a
+(Jan 03 16:06:29) [ 68/116 -  58.62%] **Started  ** Task  16: kneaddata____Water-7a
+(Jan 03 16:06:30) [ 92/116 -  79.31%] **Started  ** Task  28: kneaddata____Water-Neg3
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Started  ** Task   7: kneaddata____Water-3a
+(Jan 03 16:06:29) [  2/116 -   1.72%] **Started  ** Task  13: kneaddata____Water-6a
+(Jan 03 16:06:29) [ 84/116 -  72.41%] **Started  ** Task  25: kneaddata____Water-Neg2
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task   0: kneaddata____Water-10a
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task   4: kneaddata____Water-2a
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task   7: kneaddata____Water-3a
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task  10: kneaddata____Water-5a
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task  13: kneaddata____Water-6a
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task  16: kneaddata____Water-7a
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task  19: kneaddata____Water-9a
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task  22: kneaddata____Water-Neg1
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task  25: kneaddata____Water-Neg2
+(Jan 03 16:06:28) [  0/116 -   0.00%] **Ready    ** Task  28: kneaddata____Water-Neg3
+(Jan 03 16:06:29) [  1/116 -   0.86%] **Failed   ** Task   4: kneaddata____Water-2a
+(Jan 03 16:06:29) [  2/116 -   1.72%] **Failed   ** Task  34: metaphlan____Water-2a.fastq.gz
+(Jan 03 16:06:29) [  3/116 -   2.59%] **Failed   ** Task  31: kneaddata_read_count_table
+(Jan 03 16:06:29) [  4/116 -   3.45%] **Failed   ** Task  47: humann____Water-2a.fastq.gz
+(Jan 03 16:06:29) [  5/116 -   4.31%] **Failed   ** Task 108: strainphlan_sample2markers____Water-2a.fastq
+(Jan 03 16:06:29) [  6/116 -   5.17%] **Failed   ** Task  43: metaphlan_join_taxonomic_profiles
+(Jan 03 16:06:29) [  7/116 -   6.03%] **Failed   ** Task  58: humann_regroup_UniRef2EC____Water-2a.fastq.gz
+(Jan 03 16:06:29) [  8/116 -   6.90%] **Failed   ** Task  71: humann_renorm_genes_relab____Water-2a.fastq.gz
+(Jan 03 16:06:29) [  9/116 -   7.76%] **Failed   ** Task  91: humann_renorm_pathways_relab____Water-2a.fastq.gz
+(Jan 03 16:06:29) [ 10/116 -   8.62%] **Failed   ** Task  44: metaphlan_count_species
+(Jan 03 16:06:29) [ 11/116 -   9.48%] **Failed   ** Task  56: humann_count_alignments_species
+(Jan 03 16:06:29) [ 12/116 -  10.34%] **Failed   ** Task  67: humann_join_tables_genefamilies
+(Jan 03 16:06:29) [ 13/116 -  11.21%] **Failed   ** Task  69: humann_join_tables_pathabundance
+(Jan 03 16:06:29) [ 14/116 -  12.07%] **Failed   ** Task 117: strainphlan_print_clades
+(Jan 03 16:06:29) [ 15/116 -  12.93%] **Failed   ** Task  81: humann_renorm_ecs_relab____Water-2a.fastq.gz
+(Jan 03 16:06:29) [ 16/116 -  13.79%] **Failed   ** Task  68: humann_join_tables_ecs
+(Jan 03 16:06:29) [ 17/116 -  14.66%] **Failed   ** Task 100: humann_join_tables_genes_relab
+(Jan 03 16:06:29) [ 18/116 -  15.52%] **Failed   ** Task 102: humann_join_tables_pathways_relab
+(Jan 03 16:06:29) [ 19/116 -  16.38%] **Failed   ** Task 118: order_clade_list
+(Jan 03 16:06:29) [ 20/116 -  17.24%] **Failed   ** Task 101: humann_join_tables_ecs_relab
+(Jan 03 16:06:29) [ 21/116 -  18.10%] **Failed   ** Task 103: humann_count_features_genes
+(Jan 03 16:06:29) [ 22/116 -  18.97%] **Failed   ** Task 105: humann_count_features_pathways
+(Jan 03 16:06:29) [ 23/116 -  19.83%] **Failed   ** Task 119: strainphlan_clade_0
+(Jan 03 16:06:29) [ 24/116 -  20.69%] **Failed   ** Task 120: strainphlan_clade_1
+(Jan 03 16:06:29) [ 25/116 -  21.55%] **Failed   ** Task 121: strainphlan_clade_2
+(Jan 03 16:06:29) [ 26/116 -  22.41%] **Failed   ** Task 122: strainphlan_clade_3
+(Jan 03 16:06:29) [ 27/116 -  23.28%] **Failed   ** Task 123: strainphlan_clade_4
+(Jan 03 16:06:29) [ 28/116 -  24.14%] **Failed   ** Task 124: strainphlan_clade_5
+(Jan 03 16:06:29) [ 29/116 -  25.00%] **Failed   ** Task 125: strainphlan_clade_6
+(Jan 03 16:06:29) [ 30/116 -  25.86%] **Failed   ** Task 126: strainphlan_clade_7
+(Jan 03 16:06:29) [ 31/116 -  26.72%] **Failed   ** Task 127: strainphlan_clade_8
+(Jan 03 16:06:29) [ 32/116 -  27.59%] **Failed   ** Task 128: strainphlan_clade_9
+(Jan 03 16:06:29) [ 33/116 -  28.45%] **Failed   ** Task 129: strainphlan_clade_10
+(Jan 03 16:06:29) [ 34/116 -  29.31%] **Failed   ** Task 130: strainphlan_clade_11
+(Jan 03 16:06:29) [ 35/116 -  30.17%] **Failed   ** Task 131: strainphlan_clade_12
+(Jan 03 16:06:29) [ 36/116 -  31.03%] **Failed   ** Task 132: strainphlan_clade_13
+(Jan 03 16:06:29) [ 37/116 -  31.90%] **Failed   ** Task 133: strainphlan_clade_14
+(Jan 03 16:06:29) [ 38/116 -  32.76%] **Failed   ** Task 134: strainphlan_clade_15
+(Jan 03 16:06:29) [ 39/116 -  33.62%] **Failed   ** Task 135: strainphlan_clade_16
+(Jan 03 16:06:29) [ 40/116 -  34.48%] **Failed   ** Task 136: strainphlan_clade_17
+(Jan 03 16:06:29) [ 41/116 -  35.34%] **Failed   ** Task 137: strainphlan_clade_18
+(Jan 03 16:06:29) [ 42/116 -  36.21%] **Failed   ** Task 138: strainphlan_clade_19
+(Jan 03 16:06:29) [ 43/116 -  37.07%] **Failed   ** Task 104: humann_count_features_ecs
+(Jan 03 16:06:29) [ 44/116 -  37.93%] **Failed   ** Task 106: humann_merge_feature_counts
+(Jan 03 16:06:29) [ 45/116 -  38.79%] **Failed   ** Task  10: kneaddata____Water-5a
+(Jan 03 16:06:29) [ 46/116 -  39.66%] **Failed   ** Task  36: metaphlan____Water-5a.fastq.gz
+(Jan 03 16:06:29) [ 47/116 -  40.52%] **Failed   ** Task  49: humann____Water-5a.fastq.gz
+(Jan 03 16:06:29) [ 48/116 -  41.38%] **Failed   ** Task 110: strainphlan_sample2markers____Water-5a.fastq
+(Jan 03 16:06:29) [ 49/116 -  42.24%] **Failed   ** Task  60: humann_regroup_UniRef2EC____Water-5a.fastq.gz
+(Jan 03 16:06:29) [ 50/116 -  43.10%] **Failed   ** Task  73: humann_renorm_genes_relab____Water-5a.fastq.gz
+(Jan 03 16:06:29) [ 51/116 -  43.97%] **Failed   ** Task  93: humann_renorm_pathways_relab____Water-5a.fastq.gz
+(Jan 03 16:06:29) [ 52/116 -  44.83%] **Failed   ** Task  83: humann_renorm_ecs_relab____Water-5a.fastq.gz
+(Jan 03 16:06:29) [ 53/116 -  45.69%] **Failed   ** Task   7: kneaddata____Water-3a
+(Jan 03 16:06:29) [ 54/116 -  46.55%] **Failed   ** Task  35: metaphlan____Water-3a.fastq.gz
+(Jan 03 16:06:29) [ 55/116 -  47.41%] **Failed   ** Task  48: humann____Water-3a.fastq.gz
+(Jan 03 16:06:29) [ 56/116 -  48.28%] **Failed   ** Task 109: strainphlan_sample2markers____Water-3a.fastq
+(Jan 03 16:06:29) [ 57/116 -  49.14%] **Failed   ** Task  59: humann_regroup_UniRef2EC____Water-3a.fastq.gz
+(Jan 03 16:06:29) [ 58/116 -  50.00%] **Failed   ** Task  72: humann_renorm_genes_relab____Water-3a.fastq.gz
+(Jan 03 16:06:29) [ 59/116 -  50.86%] **Failed   ** Task  92: humann_renorm_pathways_relab____Water-3a.fastq.gz
+(Jan 03 16:06:29) [ 60/116 -  51.72%] **Failed   ** Task  82: humann_renorm_ecs_relab____Water-3a.fastq.gz
+(Jan 03 16:06:29) [ 61/116 -  52.59%] **Failed   ** Task   0: kneaddata____Water-10a
+(Jan 03 16:06:29) [ 62/116 -  53.45%] **Failed   ** Task  32: metaphlan____Water-10a.fastq.gz
+(Jan 03 16:06:29) [ 63/116 -  54.31%] **Failed   ** Task  45: humann____Water-10a.fastq.gz
+(Jan 03 16:06:29) [ 64/116 -  55.17%] **Failed   ** Task 107: strainphlan_sample2markers____Water-10a.fastq
+(Jan 03 16:06:29) [ 65/116 -  56.03%] **Failed   ** Task  57: humann_regroup_UniRef2EC____Water-10a.fastq.gz
+(Jan 03 16:06:29) [ 66/116 -  56.90%] **Failed   ** Task  70: humann_renorm_genes_relab____Water-10a.fastq.gz
+(Jan 03 16:06:29) [ 67/116 -  57.76%] **Failed   ** Task  90: humann_renorm_pathways_relab____Water-10a.fastq.gz
+(Jan 03 16:06:29) [ 68/116 -  58.62%] **Failed   ** Task  80: humann_renorm_ecs_relab____Water-10a.fastq.gz
+(Jan 03 16:06:29) [ 69/116 -  59.48%] **Failed   ** Task  13: kneaddata____Water-6a
+(Jan 03 16:06:29) [ 70/116 -  60.34%] **Failed   ** Task  37: metaphlan____Water-6a.fastq.gz
+(Jan 03 16:06:29) [ 71/116 -  61.21%] **Failed   ** Task  50: humann____Water-6a.fastq.gz
+(Jan 03 16:06:29) [ 72/116 -  62.07%] **Failed   ** Task 111: strainphlan_sample2markers____Water-6a.fastq
+(Jan 03 16:06:29) [ 73/116 -  62.93%] **Failed   ** Task  61: humann_regroup_UniRef2EC____Water-6a.fastq.gz
+(Jan 03 16:06:29) [ 74/116 -  63.79%] **Failed   ** Task  74: humann_renorm_genes_relab____Water-6a.fastq.gz
+(Jan 03 16:06:29) [ 75/116 -  64.66%] **Failed   ** Task  94: humann_renorm_pathways_relab____Water-6a.fastq.gz
+(Jan 03 16:06:29) [ 76/116 -  65.52%] **Failed   ** Task  84: humann_renorm_ecs_relab____Water-6a.fastq.gz
+(Jan 03 16:06:29) [ 77/116 -  66.38%] **Failed   ** Task  16: kneaddata____Water-7a
+(Jan 03 16:06:29) [ 78/116 -  67.24%] **Failed   ** Task  38: metaphlan____Water-7a.fastq.gz
+(Jan 03 16:06:29) [ 79/116 -  68.10%] **Failed   ** Task  51: humann____Water-7a.fastq.gz
+(Jan 03 16:06:29) [ 80/116 -  68.97%] **Failed   ** Task 112: strainphlan_sample2markers____Water-7a.fastq
+(Jan 03 16:06:29) [ 81/116 -  69.83%] **Failed   ** Task  62: humann_regroup_UniRef2EC____Water-7a.fastq.gz
+(Jan 03 16:06:29) [ 82/116 -  70.69%] **Failed   ** Task  75: humann_renorm_genes_relab____Water-7a.fastq.gz
+(Jan 03 16:06:29) [ 83/116 -  71.55%] **Failed   ** Task  95: humann_renorm_pathways_relab____Water-7a.fastq.gz
+(Jan 03 16:06:29) [ 84/116 -  72.41%] **Failed   ** Task  85: humann_renorm_ecs_relab____Water-7a.fastq.gz
+(Jan 03 16:06:29) [ 85/116 -  73.28%] **Failed   ** Task  19: kneaddata____Water-9a
+(Jan 03 16:06:29) [ 86/116 -  74.14%] **Failed   ** Task  39: metaphlan____Water-9a.fastq.gz
+(Jan 03 16:06:29) [ 87/116 -  75.00%] **Failed   ** Task  52: humann____Water-9a.fastq.gz
+(Jan 03 16:06:29) [ 88/116 -  75.86%] **Failed   ** Task 113: strainphlan_sample2markers____Water-9a.fastq
+(Jan 03 16:06:29) [ 89/116 -  76.72%] **Failed   ** Task  63: humann_regroup_UniRef2EC____Water-9a.fastq.gz
+(Jan 03 16:06:29) [ 90/116 -  77.59%] **Failed   ** Task  76: humann_renorm_genes_relab____Water-9a.fastq.gz
+(Jan 03 16:06:29) [ 91/116 -  78.45%] **Failed   ** Task  96: humann_renorm_pathways_relab____Water-9a.fastq.gz
+(Jan 03 16:06:29) [ 92/116 -  79.31%] **Failed   ** Task  86: humann_renorm_ecs_relab____Water-9a.fastq.gz
+(Jan 03 16:06:30) [ 93/116 -  80.17%] **Failed   ** Task  22: kneaddata____Water-Neg1
+(Jan 03 16:06:30) [ 94/116 -  81.03%] **Failed   ** Task  40: metaphlan____Water-Neg1.fastq.gz
+(Jan 03 16:06:30) [ 95/116 -  81.90%] **Failed   ** Task  53: humann____Water-Neg1.fastq.gz
+(Jan 03 16:06:30) [ 96/116 -  82.76%] **Failed   ** Task 114: strainphlan_sample2markers____Water-Neg1.fastq
+(Jan 03 16:06:30) [ 97/116 -  83.62%] **Failed   ** Task  64: humann_regroup_UniRef2EC____Water-Neg1.fastq.gz
+(Jan 03 16:06:30) [ 98/116 -  84.48%] **Failed   ** Task  77: humann_renorm_genes_relab____Water-Neg1.fastq.gz
+(Jan 03 16:06:30) [ 99/116 -  85.34%] **Failed   ** Task  97: humann_renorm_pathways_relab____Water-Neg1.fastq.gz
+(Jan 03 16:06:30) [100/116 -  86.21%] **Failed   ** Task  87: humann_renorm_ecs_relab____Water-Neg1.fastq.gz
+(Jan 03 16:06:30) [101/116 -  87.07%] **Failed   ** Task  25: kneaddata____Water-Neg2
+(Jan 03 16:06:30) [102/116 -  87.93%] **Failed   ** Task  41: metaphlan____Water-Neg2.fastq.gz
+(Jan 03 16:06:30) [103/116 -  88.79%] **Failed   ** Task  54: humann____Water-Neg2.fastq.gz
+(Jan 03 16:06:30) [104/116 -  89.66%] **Failed   ** Task 115: strainphlan_sample2markers____Water-Neg2.fastq
+(Jan 03 16:06:30) [105/116 -  90.52%] **Failed   ** Task  65: humann_regroup_UniRef2EC____Water-Neg2.fastq.gz
+(Jan 03 16:06:30) [106/116 -  91.38%] **Failed   ** Task  78: humann_renorm_genes_relab____Water-Neg2.fastq.gz
+(Jan 03 16:06:30) [107/116 -  92.24%] **Failed   ** Task  98: humann_renorm_pathways_relab____Water-Neg2.fastq.gz
+(Jan 03 16:06:30) [108/116 -  93.10%] **Failed   ** Task  88: humann_renorm_ecs_relab____Water-Neg2.fastq.gz
+(Jan 03 16:06:30) [109/116 -  93.97%] **Failed   ** Task  28: kneaddata____Water-Neg3
+(Jan 03 16:06:30) [110/116 -  94.83%] **Failed   ** Task  42: metaphlan____Water-Neg3.fastq.gz
+(Jan 03 16:06:30) [111/116 -  95.69%] **Failed   ** Task  55: humann____Water-Neg3.fastq.gz
+(Jan 03 16:06:30) [112/116 -  96.55%] **Failed   ** Task 116: strainphlan_sample2markers____Water-Neg3.fastq
+(Jan 03 16:06:30) [113/116 -  97.41%] **Failed   ** Task  66: humann_regroup_UniRef2EC____Water-Neg3.fastq.gz
+(Jan 03 16:06:30) [114/116 -  98.28%] **Failed   ** Task  79: humann_renorm_genes_relab____Water-Neg3.fastq.gz
+(Jan 03 16:06:30) [115/116 -  99.14%] **Failed   ** Task  99: humann_renorm_pathways_relab____Water-Neg3.fastq.gz
+(Jan 03 16:06:30) [116/116 - 100.00%] **Failed   ** Task  89: humann_renorm_ecs_relab____Water-Neg3.fastq.gz
+Run Finished
+Task 4 failed
+  Name: kneaddata____Water-2a
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-2a.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-2a  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-2a.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-2a.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 34 failed
+  Name: metaphlan____Water-2a.fastq.gz
+  Original error: 
+  Task failed because parent task `4' failed
+Task 31 failed
+  Name: kneaddata_read_count_table
+  Original error: 
+  Task failed because parent task `4' failed
+Task 47 failed
+  Name: humann____Water-2a.fastq.gz
+  Original error: 
+  Task failed because parent task `34' failed
+Task 108 failed
+  Name: strainphlan_sample2markers____Water-2a.fastq
+  Original error: 
+  Task failed because parent task `34' failed
+Task 43 failed
+  Name: metaphlan_join_taxonomic_profiles
+  Original error: 
+  Task failed because parent task `34' failed
+Task 58 failed
+  Name: humann_regroup_UniRef2EC____Water-2a.fastq.gz
+  Original error: 
+  Task failed because parent task `47' failed
+Task 71 failed
+  Name: humann_renorm_genes_relab____Water-2a.fastq.gz
+  Original error: 
+  Task failed because parent task `47' failed
+Task 91 failed
+  Name: humann_renorm_pathways_relab____Water-2a.fastq.gz
+  Original error: 
+  Task failed because parent task `47' failed
+Task 44 failed
+  Name: metaphlan_count_species
+  Original error: 
+  Task failed because parent task `43' failed
+Task 56 failed
+  Name: humann_count_alignments_species
+  Original error: 
+  Task failed because parent task `47' failed
+Task 67 failed
+  Name: humann_join_tables_genefamilies
+  Original error: 
+  Task failed because parent task `47' failed
+Task 69 failed
+  Name: humann_join_tables_pathabundance
+  Original error: 
+  Task failed because parent task `47' failed
+Task 117 failed
+  Name: strainphlan_print_clades
+  Original error: 
+  Task failed because parent task `108' failed
+Task 81 failed
+  Name: humann_renorm_ecs_relab____Water-2a.fastq.gz
+  Original error: 
+  Task failed because parent task `58' failed
+Task 68 failed
+  Name: humann_join_tables_ecs
+  Original error: 
+  Task failed because parent task `58' failed
+Task 100 failed
+  Name: humann_join_tables_genes_relab
+  Original error: 
+  Task failed because parent task `71' failed
+Task 102 failed
+  Name: humann_join_tables_pathways_relab
+  Original error: 
+  Task failed because parent task `91' failed
+Task 118 failed
+  Name: Task118
+  Original error: 
+  Task failed because parent task `43' failed
+Task 101 failed
+  Name: humann_join_tables_ecs_relab
+  Original error: 
+  Task failed because parent task `81' failed
+Task 103 failed
+  Name: humann_count_features_genes
+  Original error: 
+  Task failed because parent task `100' failed
+Task 105 failed
+  Name: humann_count_features_pathways
+  Original error: 
+  Task failed because parent task `102' failed
+Task 119 failed
+  Name: strainphlan_clade_0
+  Original error: 
+  Task failed because parent task `108' failed
+Task 120 failed
+  Name: strainphlan_clade_1
+  Original error: 
+  Task failed because parent task `108' failed
+Task 121 failed
+  Name: strainphlan_clade_2
+  Original error: 
+  Task failed because parent task `108' failed
+Task 122 failed
+  Name: strainphlan_clade_3
+  Original error: 
+  Task failed because parent task `108' failed
+Task 123 failed
+  Name: strainphlan_clade_4
+  Original error: 
+  Task failed because parent task `108' failed
+Task 124 failed
+  Name: strainphlan_clade_5
+  Original error: 
+  Task failed because parent task `108' failed
+Task 125 failed
+  Name: strainphlan_clade_6
+  Original error: 
+  Task failed because parent task `108' failed
+Task 126 failed
+  Name: strainphlan_clade_7
+  Original error: 
+  Task failed because parent task `108' failed
+Task 127 failed
+  Name: strainphlan_clade_8
+  Original error: 
+  Task failed because parent task `108' failed
+Task 128 failed
+  Name: strainphlan_clade_9
+  Original error: 
+  Task failed because parent task `108' failed
+Task 129 failed
+  Name: strainphlan_clade_10
+  Original error: 
+  Task failed because parent task `108' failed
+Task 130 failed
+  Name: strainphlan_clade_11
+  Original error: 
+  Task failed because parent task `108' failed
+Task 131 failed
+  Name: strainphlan_clade_12
+  Original error: 
+  Task failed because parent task `108' failed
+Task 132 failed
+  Name: strainphlan_clade_13
+  Original error: 
+  Task failed because parent task `108' failed
+Task 133 failed
+  Name: strainphlan_clade_14
+  Original error: 
+  Task failed because parent task `108' failed
+Task 134 failed
+  Name: strainphlan_clade_15
+  Original error: 
+  Task failed because parent task `108' failed
+Task 135 failed
+  Name: strainphlan_clade_16
+  Original error: 
+  Task failed because parent task `108' failed
+Task 136 failed
+  Name: strainphlan_clade_17
+  Original error: 
+  Task failed because parent task `108' failed
+Task 137 failed
+  Name: strainphlan_clade_18
+  Original error: 
+  Task failed because parent task `108' failed
+Task 138 failed
+  Name: strainphlan_clade_19
+  Original error: 
+  Task failed because parent task `108' failed
+Task 104 failed
+  Name: humann_count_features_ecs
+  Original error: 
+  Task failed because parent task `101' failed
+Task 106 failed
+  Name: humann_merge_feature_counts
+  Original error: 
+  Task failed because parent task `104' failed
+Task 10 failed
+  Name: kneaddata____Water-5a
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-5a.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-5a  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-5a.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-5a.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 36 failed
+  Name: metaphlan____Water-5a.fastq.gz
+  Original error: 
+  Task failed because parent task `10' failed
+Task 49 failed
+  Name: humann____Water-5a.fastq.gz
+  Original error: 
+  Task failed because parent task `10' failed
+Task 110 failed
+  Name: strainphlan_sample2markers____Water-5a.fastq
+  Original error: 
+  Task failed because parent task `36' failed
+Task 60 failed
+  Name: humann_regroup_UniRef2EC____Water-5a.fastq.gz
+  Original error: 
+  Task failed because parent task `49' failed
+Task 73 failed
+  Name: humann_renorm_genes_relab____Water-5a.fastq.gz
+  Original error: 
+  Task failed because parent task `49' failed
+Task 93 failed
+  Name: humann_renorm_pathways_relab____Water-5a.fastq.gz
+  Original error: 
+  Task failed because parent task `49' failed
+Task 83 failed
+  Name: humann_renorm_ecs_relab____Water-5a.fastq.gz
+  Original error: 
+  Task failed because parent task `60' failed
+Task 7 failed
+  Name: kneaddata____Water-3a
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-3a.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-3a  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-3a.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-3a.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 35 failed
+  Name: metaphlan____Water-3a.fastq.gz
+  Original error: 
+  Task failed because parent task `7' failed
+Task 48 failed
+  Name: humann____Water-3a.fastq.gz
+  Original error: 
+  Task failed because parent task `35' failed
+Task 109 failed
+  Name: strainphlan_sample2markers____Water-3a.fastq
+  Original error: 
+  Task failed because parent task `35' failed
+Task 59 failed
+  Name: humann_regroup_UniRef2EC____Water-3a.fastq.gz
+  Original error: 
+  Task failed because parent task `48' failed
+Task 72 failed
+  Name: humann_renorm_genes_relab____Water-3a.fastq.gz
+  Original error: 
+  Task failed because parent task `48' failed
+Task 92 failed
+  Name: humann_renorm_pathways_relab____Water-3a.fastq.gz
+  Original error: 
+  Task failed because parent task `48' failed
+Task 82 failed
+  Name: humann_renorm_ecs_relab____Water-3a.fastq.gz
+  Original error: 
+  Task failed because parent task `59' failed
+Task 0 failed
+  Name: kneaddata____Water-10a
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-10a.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-10a  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-10a.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-10a.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 32 failed
+  Name: metaphlan____Water-10a.fastq.gz
+  Original error: 
+  Task failed because parent task `0' failed
+Task 45 failed
+  Name: humann____Water-10a.fastq.gz
+  Original error: 
+  Task failed because parent task `0' failed
+Task 107 failed
+  Name: strainphlan_sample2markers____Water-10a.fastq
+  Original error: 
+  Task failed because parent task `32' failed
+Task 57 failed
+  Name: humann_regroup_UniRef2EC____Water-10a.fastq.gz
+  Original error: 
+  Task failed because parent task `45' failed
+Task 70 failed
+  Name: humann_renorm_genes_relab____Water-10a.fastq.gz
+  Original error: 
+  Task failed because parent task `45' failed
+Task 90 failed
+  Name: humann_renorm_pathways_relab____Water-10a.fastq.gz
+  Original error: 
+  Task failed because parent task `45' failed
+Task 80 failed
+  Name: humann_renorm_ecs_relab____Water-10a.fastq.gz
+  Original error: 
+  Task failed because parent task `57' failed
+Task 13 failed
+  Name: kneaddata____Water-6a
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-6a.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-6a  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-6a.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-6a.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 37 failed
+  Name: metaphlan____Water-6a.fastq.gz
+  Original error: 
+  Task failed because parent task `13' failed
+Task 50 failed
+  Name: humann____Water-6a.fastq.gz
+  Original error: 
+  Task failed because parent task `13' failed
+Task 111 failed
+  Name: strainphlan_sample2markers____Water-6a.fastq
+  Original error: 
+  Task failed because parent task `37' failed
+Task 61 failed
+  Name: humann_regroup_UniRef2EC____Water-6a.fastq.gz
+  Original error: 
+  Task failed because parent task `50' failed
+Task 74 failed
+  Name: humann_renorm_genes_relab____Water-6a.fastq.gz
+  Original error: 
+  Task failed because parent task `50' failed
+Task 94 failed
+  Name: humann_renorm_pathways_relab____Water-6a.fastq.gz
+  Original error: 
+  Task failed because parent task `50' failed
+Task 84 failed
+  Name: humann_renorm_ecs_relab____Water-6a.fastq.gz
+  Original error: 
+  Task failed because parent task `61' failed
+Task 16 failed
+  Name: kneaddata____Water-7a
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-7a.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-7a  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-7a.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-7a.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 38 failed
+  Name: metaphlan____Water-7a.fastq.gz
+  Original error: 
+  Task failed because parent task `16' failed
+Task 51 failed
+  Name: humann____Water-7a.fastq.gz
+  Original error: 
+  Task failed because parent task `16' failed
+Task 112 failed
+  Name: strainphlan_sample2markers____Water-7a.fastq
+  Original error: 
+  Task failed because parent task `38' failed
+Task 62 failed
+  Name: humann_regroup_UniRef2EC____Water-7a.fastq.gz
+  Original error: 
+  Task failed because parent task `51' failed
+Task 75 failed
+  Name: humann_renorm_genes_relab____Water-7a.fastq.gz
+  Original error: 
+  Task failed because parent task `51' failed
+Task 95 failed
+  Name: humann_renorm_pathways_relab____Water-7a.fastq.gz
+  Original error: 
+  Task failed because parent task `51' failed
+Task 85 failed
+  Name: humann_renorm_ecs_relab____Water-7a.fastq.gz
+  Original error: 
+  Task failed because parent task `62' failed
+Task 19 failed
+  Name: kneaddata____Water-9a
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-9a.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-9a  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-9a.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-9a.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 39 failed
+  Name: metaphlan____Water-9a.fastq.gz
+  Original error: 
+  Task failed because parent task `19' failed
+Task 52 failed
+  Name: humann____Water-9a.fastq.gz
+  Original error: 
+  Task failed because parent task `19' failed
+Task 113 failed
+  Name: strainphlan_sample2markers____Water-9a.fastq
+  Original error: 
+  Task failed because parent task `39' failed
+Task 63 failed
+  Name: humann_regroup_UniRef2EC____Water-9a.fastq.gz
+  Original error: 
+  Task failed because parent task `52' failed
+Task 76 failed
+  Name: humann_renorm_genes_relab____Water-9a.fastq.gz
+  Original error: 
+  Task failed because parent task `52' failed
+Task 96 failed
+  Name: humann_renorm_pathways_relab____Water-9a.fastq.gz
+  Original error: 
+  Task failed because parent task `52' failed
+Task 86 failed
+  Name: humann_renorm_ecs_relab____Water-9a.fastq.gz
+  Original error: 
+  Task failed because parent task `63' failed
+Task 22 failed
+  Name: kneaddata____Water-Neg1
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-Neg1.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-Neg1  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-Neg1.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-Neg1.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 40 failed
+  Name: metaphlan____Water-Neg1.fastq.gz
+  Original error: 
+  Task failed because parent task `22' failed
+Task 53 failed
+  Name: humann____Water-Neg1.fastq.gz
+  Original error: 
+  Task failed because parent task `40' failed
+Task 114 failed
+  Name: strainphlan_sample2markers____Water-Neg1.fastq
+  Original error: 
+  Task failed because parent task `40' failed
+Task 64 failed
+  Name: humann_regroup_UniRef2EC____Water-Neg1.fastq.gz
+  Original error: 
+  Task failed because parent task `53' failed
+Task 77 failed
+  Name: humann_renorm_genes_relab____Water-Neg1.fastq.gz
+  Original error: 
+  Task failed because parent task `53' failed
+Task 97 failed
+  Name: humann_renorm_pathways_relab____Water-Neg1.fastq.gz
+  Original error: 
+  Task failed because parent task `53' failed
+Task 87 failed
+  Name: humann_renorm_ecs_relab____Water-Neg1.fastq.gz
+  Original error: 
+  Task failed because parent task `64' failed
+Task 25 failed
+  Name: kneaddata____Water-Neg2
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-Neg2.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-Neg2  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-Neg2.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-Neg2.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 41 failed
+  Name: metaphlan____Water-Neg2.fastq.gz
+  Original error: 
+  Task failed because parent task `25' failed
+Task 54 failed
+  Name: humann____Water-Neg2.fastq.gz
+  Original error: 
+  Task failed because parent task `25' failed
+Task 115 failed
+  Name: strainphlan_sample2markers____Water-Neg2.fastq
+  Original error: 
+  Task failed because parent task `41' failed
+Task 65 failed
+  Name: humann_regroup_UniRef2EC____Water-Neg2.fastq.gz
+  Original error: 
+  Task failed because parent task `54' failed
+Task 78 failed
+  Name: humann_renorm_genes_relab____Water-Neg2.fastq.gz
+  Original error: 
+  Task failed because parent task `54' failed
+Task 98 failed
+  Name: humann_renorm_pathways_relab____Water-Neg2.fastq.gz
+  Original error: 
+  Task failed because parent task `54' failed
+Task 88 failed
+  Name: humann_renorm_ecs_relab____Water-Neg2.fastq.gz
+  Original error: 
+  Task failed because parent task `65' failed
+Task 28 failed
+  Name: kneaddata____Water-Neg3
+  Original error: 
+  Error executing action 0. Original Exception: 
+  Traceback (most recent call last):
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/runners.py", line 200, in _run_task_locally
+      action_func(task)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/helpers.py", line 107, in actually_sh
+      ret = _sh(s, **kwargs)
+    File "/home/d24h_prog2/miniconda3/envs/vivian-biobakery/lib/python3.10/site-packages/anadama2/util/__init__.py", line 320, in sh
+      raise ShellException(proc.returncode, msg.format(cmd, ret[0].decode('utf-8'), ret[1].decode('utf-8')))
+  anadama2.util.ShellException: [Errno 1] Command `kneaddata --input1 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-Neg3.R1.fq.gz --output /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main --threads 40 --output-prefix Water-Neg3  --input2 /home/d24h_prog2/data_share/ice_water/data/trimmed_lns/Water-Neg3.R2.fq.gz --cat-final-output  --reference-db /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome  --serial --run-trf  && gzip -f /home/d24h_prog2/data_share/ice_water/jobs/20240102-biobakery_wmgx-26211/kneaddata/main/Water-Neg3.fastq ' failed. 
+  Out: 
+  Err: ERROR: Unable to find bowtie2 index files in directory: /home/d24h_prog2/biobakery_workflows_databases/kneaddata_db_human_genome
+  
+  
+Task 42 failed
+  Name: metaphlan____Water-Neg3.fastq.gz
+  Original error: 
+  Task failed because parent task `28' failed
+Task 55 failed
+  Name: humann____Water-Neg3.fastq.gz
+  Original error: 
+  Task failed because parent task `42' failed
+Task 116 failed
+  Name: strainphlan_sample2markers____Water-Neg3.fastq
+  Original error: 
+  Task failed because parent task `42' failed
+Task 66 failed
+  Name: humann_regroup_UniRef2EC____Water-Neg3.fastq.gz
+  Original error: 
+  Task failed because parent task `55' failed
+Task 79 failed
+  Name: humann_renorm_genes_relab____Water-Neg3.fastq.gz
+  Original error: 
+  Task failed because parent task `55' failed
+Task 99 failed
+  Name: humann_renorm_pathways_relab____Water-Neg3.fastq.gz
+  Original error: 
+  Task failed because parent task `55' failed
+Task 89 failed
+  Name: humann_renorm_ecs_relab____Water-Neg3.fastq.gz
+  Original error: 
+  Task failed because parent task `66' failed
+-------------------------
+Finished with exit code 0
+Duration: 4 seconds
+Job Finish Time is Wed Jan  3 16:06:30 2024.

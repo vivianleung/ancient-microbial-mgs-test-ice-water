@@ -1,0 +1,202 @@
+#!/usr/bin/env bash
+
+# biobakery.pbs
+
+# Run biobakery
+
+# Vivian Leung
+# Created:       03 Jan 2024
+# Last updated:  03 Jan 2024
+# Last used:     03 Jan 2024
+
+### Job name
+### Queue name (qaussian): stdq1, medq1, fatq1 or gpuq1
+### Wall time required (between 00:00:01 to 336:00:00).
+### Number of CPUs: ppn: up to 40 for stdq1, 48 for gpuq1, 64 for medq1 and fatq1
+### Memory: up to 750gb for stdq1, 1000gb for medq1 and gpuq1, 3000gb for fatq1
+
+#PBS -N 20240102-biobakery_wmgx
+#PBS -q stdq1
+#PBS -l walltime=200:00:00
+#PBS -l select=1:ncpus=40:mem=750gb
+
+## Generally fixed settings
+#__PBS -M vivian
+#__PBS -m ae
+#PBS -M leungvw@connect.hku.hk
+#PBS -v MODULEPATH
+
+### Declare job non-rerunable
+#PBS -r n
+#PBS -k oed
+
+#######
+set -e
+set -o nounset
+set -o errtrace
+set -o pipefail
+
+export start_time=$(date +'%s.%N') DRY_RUN= KEEP_TMP= NO_TMPDIR=
+
+DRY_RUN='n'
+KEEP_TMP='n'
+NO_TMPDIR=1
+# NO_TMPDIR=0  # don't make tmpdir   # for socket
+
+############ SPECS AND PARAMS ############
+
+# I/O
+
+# constants exports for pbsutils and jobs
+export PROJECT_DIR DATA_DIR INPUT_DIR OUT_DIR ROSTER
+declare -A INPATHS OUT_DIRS OUTFILES
+
+# key directories
+PROJECT_DIR="/home/d24h_prog2/data_share/ice_water"
+DATA_DIR="$PROJECT_DIR/data"
+INPUT_DIR="$DATA_DIR/trimmed_lns"
+
+# # Headerless tsv with paired fastqs relpaths (relative to input dir)
+# ROSTER="$INPUT_DIR/trimmed_fqs.tsv"
+
+# assoc array for easier logging
+INPATHS=(
+    # [roster]="$ROSTER"
+    [input_dir]="$INPUT_DIR"
+)
+
+# Job output dir
+OUT_DIR="${PROJECT_DIR}/jobs/${PBS_JOBNAME}-${PBS_JOBID%%.*}"
+
+# output dirs to make
+OUT_DIRS=(
+    [main]="${OUT_DIR}"
+)
+
+# environment settings
+declare CONDA_ENV MODULES
+
+CONDA_ENV="vivian-biobakery"
+MODULES=(
+    'vivian/parallel/20221222'
+)
+
+# Exports: duration timestamp print_array print_params set_conda_env
+#          DEFAULT_CONDA_PREFIX
+# run /home/d24h_prog2/vivian/utils/utils.sh --help for helpdoc
+source "/home/d24h_prog2/vivian/utils/utils.sh"
+
+
+# i/o flags and options on run
+declare -a COMMON_JOB_ARGS=(
+    biobakery_workflows wmgx --threads $OMP_NUM_THREADS --local-jobs 4 --input-extension fq.gz --input "$INPUT_DIR" --output "$OUT_DIR"
+)
+  
+############ UTILS AND FUNCTIONS  ############
+# put things like path generation here
+
+# fq_basename () { basename "$1" | sed -E 's/(_[12])?(\.[^.]+)*\.(fq|fastq)(\.gz)?$//' ; }
+# export -f fq_basename
+
+# File naming conventions
+
+############  STANDARD/FIXED SETUP  ############
+
+# Common utilities for PBS scripts
+
+# Export PBS variables for pbsutils
+export PBS_JOBNAME PBS_NODEFILE PBS_O_WORKDIR OMP_NUM_THREADS
+
+# remove junk in PATH (manually put in by others in ~/.bashrc)
+export PATH="$(clean_path "$PBS_O_PATH" -e '^\/home\/d24h_prog2\/' \
+      -i '^\/home\/d24h_prog2\/(\.conda|miniconda3|vivian)\/')"
+
+cd $PBS_O_WORKDIR
+
+# Parse PBS variables
+
+# export PBS variables for pbsutils
+export NPROCS NNODES NCORES JID
+
+NPROCS=$(wc -l < $PBS_NODEFILE)
+NNODES=$(uniq $PBS_NODEFILE | wc -l)
+NCORES=$((NPROCS / NNODES))
+JID="${PBS_JOBID%%.*}"
+
+# Parse input rosters and logs
+export roster n_samples
+if [[ -n "${ROSTER+foo}" ]] ; then
+    roster="$PBS_O_WORKDIR/$PBS_JOBNAME.$(basename "$ROSTER").$JID"
+    cp "$ROSTER" "$roster"
+    n_samples=$(wc -l <"${roster}")
+fi
+
+# Save this pbs job script to jobs dir
+cp "$0" "$PBS_O_WORKDIR/$PBS_JOBNAME.pbs.$JID"
+
+##  Prep environment ##
+
+# init conda env
+set_conda_env "$CONDA_ENV"
+
+# import modules
+for mod in "${MODULES[@]}" ; do module load "${mod}" ; done
+
+# this must come after defining all of the below exported
+# exports: is_dry_run do_keep_tmp epilogue epilogue_simple trap_error
+#          trap_finish_job standard_prologue io_prologue
+source "/home/d24h_prog2/vivian/utils/pbsutils.sh"
+
+trap trap_error ERR
+trap epilogue_simple EXIT
+
+# print info about PBS and environment
+standard_prologue
+
+io_prologue 'INPATHS' 'OUT_DIRS' 'OUTFILES'
+
+############  END OF STANDARD/FIXED SETUP  ############
+
+# Report params and programs
+cat <<-PROLOGUE_PROGRAMS_PARAMS
+
+	============== Programs in Use ==============
+	> biobakery:  $(biobakery --version 2>&1)
+	$(which biobakery)
+
+	> metaphlan:  $(metaphlan --version 2>&1)
+	$(which metaphlan)
+
+	============ Common Command Params ============
+	> biobakery
+	$( (( ${#COMMON_JOB_ARGS[@]} > 0 )) &&  print_params "${COMMON_JOB_ARGS[@]}" )
+
+PROLOGUE_PROGRAMS_PARAMS
+
+
+####################  EXECUTE  ####################
+
+printf "============== EXECUTING..... ==============\n"
+
+# make output dirs
+mkdir -p "${OUT_DIR}"
+mkdir -pv "${OUT_DIRS[@]}"
+
+# make tmpdir
+if [[ ${NO_TMPDIR:-0} == 0  ]] ; then
+  TMPDIR="$(mktemp -d)"
+else
+  mktempdir
+# shorten path
+  export TMPDIR="$(realpath --relative-to="${INPUT_DIR}" $TMPDIR)"
+fi
+
+# important: go to directory
+cd "${INPUT_DIR}"
+
+printf '%s Running biobakery\n' "$(timestamp)"
+
+[[ -z "${n_samples:-}" ]] || printf '%s %d samples\n' "$(timestamp)" ${n_samples}
+
+eval "${COMMON_JOB_ARGS[@]}"
+
